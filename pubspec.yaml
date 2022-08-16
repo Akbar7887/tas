@@ -80,8 +80,6 @@ flutter:
     - assets/images/ser2.jpeg
     - assets/images/ser3.jpeg
     - assets/images/ser4.jpeg
-    - assets/cant/taskey.pem
-    - assets/cant/taskey.p12
     - assets/images/Instagram_icon.png
   #   - images/a_dot_ham.jpeg
 
