@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:tas/bloc/producer_state.dart';
 import 'package:tas/bloc/section_bloc.dart';
 import 'package:tas/provider/section_provider.dart';
@@ -24,7 +25,7 @@ class SectionPage extends StatelessWidget {
         }
         if (state is SectionLoadedState) {
           //
-          return listform(state);
+          return listform(context, state);
         }
 
         if (state is ProducerErorState) {
@@ -38,13 +39,13 @@ class SectionPage extends StatelessWidget {
     );
   }
 
-  Widget listform(state) {
+  Widget listform(context, state) {
     return Column(
       children: [
         Container(
           padding: EdgeInsets.only(top: 20, bottom: 20),
           child: Text(
-            "Каталоги",
+            Ui.catalogs[Provider.of<SimpleProvider>(context).getuzru]!,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
@@ -57,43 +58,63 @@ class SectionPage extends StatelessWidget {
     return ListView.builder(
         itemCount: state.loadedSection.length,
         itemBuilder: (context, index) {
+          Uz_ru uz_ru = Provider.of<SimpleProvider>(context).getuzru;
+
           return InkWell(
               onTap: () {
-                context.read<SectionProvider>().changeSection(state.loadedSection[index]);
+                context
+                    .read<SectionProvider>()
+                    .changeSection(state.loadedSection[index]);
                 context.read<SimpleProvider>().changepage(1);
-
               },
               child: Container(
                 // decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), border: Border(),),
                 padding: EdgeInsets.only(left: 10, right: 10),
+                // margin: EdgeInsets.all(0),
                 height: 100,
                 child: Card(
+                    elevation: 1,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15)),
                     child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            color: Colors.yellow[50]),
-                        padding: EdgeInsets.all(10),
+                            color: Colors.yellow[40]),
+                        padding: EdgeInsets.all(5),
                         // color: Colors.red,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.network(
-                              "${Ui.url}download/section/${state.loadedSection[index].imagepath}",
-                            ),
-                            // VerticalDivider(color: Colors.black45,),
-                            SizedBox(
-                              width: 30,
-                            ),
+                            // SizedBox(width: 10,),
                             Container(
-                                child: Text(
-                              state.loadedSection[index].name,
-                              style: TextStyle(
-                                fontSize: 30,
-                                // sfontFamily: "Oswald",
+                              width: 50,
+                              alignment: Alignment.center,
+                              child: Image.network(
+                                "${Ui.url}download/section/${state.loadedSection[index].imagepath}",
+                                height: 180,
+                                width: 200,
                               ),
-                            ))
+                            ),
+                            VerticalDivider(
+                              color: Colors.black26,
+                            ),
+                            Expanded(
+                                child: Wrap(
+                              alignment: WrapAlignment.center,
+                              children: [
+                                Text(
+                                    (uz_ru == Uz_ru.UZ
+                                            ? state.loadedSection[index].name
+                                            : state.loadedSection[index].nameuz)
+                                        .toString()
+                                        .toUpperCase(),
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontFamily: "Oswald",
+                                    )),
+                              ],
+                            )),
                           ],
                         ))),
               ));

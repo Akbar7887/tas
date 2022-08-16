@@ -35,19 +35,19 @@ class DrawerHome extends StatelessWidget {
                 height: 220,
                 child: DrawerHeader(
               decoration: BoxDecoration(
-                  color: Colors.amberAccent,
-                  borderRadius: BorderRadius.circular(30)),
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Column(
-                  //crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      //crossAxisAlignment: CrossAxisAlignment.,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      color: Colors.amberAccent[100],
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Column(
+                      //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Row(
+                          //crossAxisAlignment: CrossAxisAlignment.,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
                         Container(
                           child: Text(
                             "Компания ${Ui.name}",

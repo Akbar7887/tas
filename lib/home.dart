@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:provider/provider.dart';
 import 'package:tas/bloc/customer_bloc.dart';
-import 'package:tas/bloc/model_bloc.dart';
 import 'package:tas/bloc/newscompany_bloc.dart';
+import 'package:tas/bloc/producer_bloc.dart';
 import 'package:tas/bloc/producer_event.dart';
 import 'package:tas/bloc/section_bloc.dart';
 import 'package:tas/provider/section_provider.dart';
@@ -44,10 +44,28 @@ _callTelegram() async {
   }
 }
 
+_callInstagram() async {
+  String url = "https://${Ui.inhstagram}";
+  if (await canLaunch(url)) {
+    await launch(url, forceSafariVC: false);
+  } else {
+    throw 'Could not url';
+  }
+}
+
+_callFacebook() async {
+  String url = "https://${Ui.facebook}";
+  if (await canLaunch(url)) {
+    await launch(url, forceSafariVC: false);
+  } else {
+    throw 'Could not url';
+  }
+}
+
 class _HomeState extends State<Home> {
   int currentindex = 1;
-  String textnext = "Далее";
   Uz_ru uz_ru = Uz_ru.UZ;
+  String textnext = Ui.h3[Uz_ru.UZ]!;
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +75,14 @@ class _HomeState extends State<Home> {
             providers: [
               BlocProvider(
                 create: (context) =>
-                    ModelBloc(repository: context.read<Repository>())
+                    ProducerBloc(producerRepository: context.read<Repository>())
                       ..add(ProducerLoadEvent()),
               ),
+              // BlocProvider(
+              //   create: (context) =>
+              //       ModelBloc(repository: context.read<Repository>())
+              //         ..add(ProducerLoadEvent()),
+              // ),
               BlocProvider(
                 create: (context) =>
                     CustomerBloc(repository: context.read<Repository>()),
@@ -77,10 +100,10 @@ class _HomeState extends State<Home> {
             ],
             child: Scaffold(
                 appBar: AppBar(
-                  backgroundColor: Colors.amberAccent,
-                  elevation: 3,
+                  backgroundColor: Colors.amberAccent[100],
+                  elevation: 1,
                   shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: Colors.amber),
+                      side: BorderSide(width: 0.5, color: Colors.amber),
                       borderRadius: BorderRadius.vertical(
                         bottom: Radius.circular(30.0),
                       )),
@@ -104,11 +127,31 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                   bottom: PreferredSize(
-                    preferredSize: Size.fromHeight(20),
+                    preferredSize: Size.fromHeight(50),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       // crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
+                        IconButton(
+                          onPressed: () {
+                            _callInstagram();
+                          },
+                          icon: Image.asset(
+                            'assets/images/Instagram_icon.png',
+                            width: 30,
+                            height: 30,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            _callFacebook();
+                          },
+                          icon: Icon(
+                            Icons.facebook,
+                            color: Colors.blue,
+                            size: 30,
+                          ),
+                        ),
                         IconButton(
                           onPressed: () {
                             _callTelegram();
@@ -116,6 +159,7 @@ class _HomeState extends State<Home> {
                           icon: Icon(
                             Icons.telegram,
                             color: Colors.blue,
+                            size: 30,
                           ),
                         ),
                         SizedBox(
@@ -127,7 +171,7 @@ class _HomeState extends State<Home> {
                           },
                           child: Icon(
                             Icons.phone_android_outlined,
-                            size: 15,
+                            size: 30,
                           ),
                         ),
                         SizedBox(
@@ -150,21 +194,25 @@ class _HomeState extends State<Home> {
                   ),
                   actions: [
                     InkWell(
-                      onTap: () {
-                        setState(() {
-                          if (uz_ru == Uz_ru.UZ) {
-                            uz_ru = Uz_ru.RU;
-                          } else {
-                            uz_ru = Uz_ru.UZ;
-                          }
-                          context.read<SimpleProvider>().changuzru(uz_ru);
-                        });
-                      },
-                      child: Text(
-                        uz_ru.name,
-                        style: TextStyle(fontSize: 18, color: Colors.blue),
-                      ),
-                    ),
+                        onTap: () {
+                          setState(() {
+                            if (uz_ru == Uz_ru.UZ) {
+                              uz_ru = Uz_ru.RU;
+                            } else {
+                              uz_ru = Uz_ru.UZ;
+                            }
+                            context.read<SimpleProvider>().changuzru(uz_ru);
+                          });
+                        },
+                        child: Container(
+                          child: Text(
+                            uz_ru.name,
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        )),
                     SizedBox(
                       width: 20,
                     )
@@ -175,7 +223,7 @@ class _HomeState extends State<Home> {
                 bottomNavigationBar: ConvexAppBar(
                   initialActiveIndex: currentindex,
                   color: Colors.black,
-                  backgroundColor: Colors.yellow,
+                  backgroundColor: Colors.amberAccent[100],
                   items: [
                     TabItem(
                         icon: Icon(
@@ -184,7 +232,7 @@ class _HomeState extends State<Home> {
                           size: 15,
                         ),
                         title: Ui.h1[uz_ru]),
-                    TabItem(icon: Icon(Icons.menu)),
+                    TabItem(icon: Icon(Icons.menu), title: Ui.catalogs[uz_ru]),
                     TabItem(
                         icon: Icon(
                           Icons.navigate_next_sharp,
@@ -197,32 +245,32 @@ class _HomeState extends State<Home> {
                       context.read<SectionProvider>().changeSection(null);
                       context.read<SimpleProvider>().changepage(1);
                       context.read<SimpleProvider>().changetitle(Ui.name);
-                      setState(() {
-                        textnext = Ui.h2[uz_ru]!;
-                      });
+                      // setState(() {
+                      //   textnext = Ui.h2[uz_ru]!;
+                      // });
                     } else if (index == 1) {
                       context.read<SimpleProvider>().changepage(6);
-                      setState(() {
-                        textnext = Ui.h3[uz_ru]!;
-                      });
+                      // setState(() {
+                      //   textnext = Ui.h3[uz_ru]!;
+                      // });
                     } else if (context.read<SimpleProvider>().getpage == 1) {
                       if (context.read<SimpleProvider>().getindexSelected !=
                           -1) {
                         context.read<SimpleProvider>().changepage(2);
                       }
-                      setState(() {
-                        textnext = Ui.h2[uz_ru]!;
-                      });
+                      // setState(() {
+                      //   textnext = Ui.h2[uz_ru]!;
+                      // });
                     } else if (context.read<SimpleProvider>().getpage == 2) {
                       context.read<SimpleProvider>().changepage(3);
                       context.read<SimpleProvider>().changetitle(Ui.d3[uz_ru]!);
-                      setState(() {
-                        textnext = "Далее";
-                      });
+                      // setState(() {
+                      //   textnext = "Далее";
+                      // });
                     } else if (context.read<SimpleProvider>().getpage == 6) {
-                      setState(() {
-                        textnext = Ui.h3[uz_ru]!;
-                      });
+                      // setState(() {
+                      //   textnext = Ui.h3[uz_ru]!;
+                      // });
                       context.read<SimpleProvider>().changepage(5);
                     } else if (context.read<SimpleProvider>().getpage == 3) {
                       context.read<SimpleProvider>().changepage(5);

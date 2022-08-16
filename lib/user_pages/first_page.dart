@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:tas/bloc/model_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:tas/bloc/producer_bloc.dart';
 import 'package:tas/bloc/producer_state.dart';
 import 'package:tas/models/ModelSet.dart';
+import 'package:tas/models/Section.dart';
 import 'package:tas/provider/models_provider.dart';
 import 'package:tas/provider/section_provider.dart';
 import 'package:tas/provider/simle_provider.dart';
 
-import '../models/Section.dart';
+import '../models/Producer.dart';
 import '../models/ui.dart';
 
 class FirstPage extends StatefulWidget {
@@ -21,16 +23,27 @@ class FirstPage extends StatefulWidget {
 class _FirstPageState extends State<FirstPage> {
   bool formlist = false;
   final numberFormat = NumberFormat.simpleCurrency(locale: "UZ");
+  List<Producer> producerlist = [];
+  ProducerBloc? producerBloc;
+  List<ModelSet> modelList = [];
+  Uz_ru? uz_ru;
 
   // Section? section;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  // } // int indexSelected = 0;
+  @override
+  void initState() {
+    super.initState();
+
+    // producerBloc = BlocProvider.of<ProducerBloc>(context);
+    // producerBloc!.getAll().then((value) {
+    //   producerlist = value;
+    // });
+  } // int indexSelected = 0;
 
   @override
   Widget build(BuildContext context) {
+    uz_ru = Provider.of<SimpleProvider>(context).getuzru;
+
     return Column(children: [
       Container(
         height: 50,
@@ -86,7 +99,7 @@ class _FirstPageState extends State<FirstPage> {
   }
 
   Widget mainread() {
-    return BlocConsumer<ModelBloc, ProducerState>(builder: (context, state) {
+    return BlocConsumer<ProducerBloc, ProducerState>(builder: (context, state) {
       if (state is ProducerEmtyState) {
         return Center(child: Text("No data!"));
       }
@@ -94,27 +107,33 @@ class _FirstPageState extends State<FirstPage> {
       if (state is ProducerLoadingState) {
         return Center(child: CircularProgressIndicator());
       }
-      if (state is ModelLoadedState) {
-        List<ModelSet>? modelList = [];
-        if (context.watch<SectionProvider>().getSection?.id != null) {
-          modelList = state.loadedModel
-              .where((element) =>
-                  element.section?.id ==
-                  context.watch<SectionProvider>().getSection?.id)
+      if (state is ProducerLoadedState) {
+        producerlist = state.loadedProduser;
+        modelList = [];
+
+        for (Producer prod in producerlist) {
+          // modelList!.addAll(prod.modelSet!);
+          for (ModelSet modelSet in prod.modelSet!) {
+            modelSet.country = prod.country;
+            modelSet.countryuz = prod.countryuz;
+            modelList.add(modelSet);
+          }
+        }
+        SectionProvider sectionProvider = context.watch<SectionProvider>();
+        Section? section = sectionProvider.getSection;
+
+        if (section != null) {
+          modelList = modelList
+              .where((element) => element.section!.id == section.id)
               .toList();
-          return Expanded(
-              child: formlist == false
-                  ? gridform(modelList)
-                  : listform(modelList));
-        } else {
-          modelList = state.loadedModel;
+        }
+
+        if (modelList.length != 0) {
           return Expanded(
               child: formlist == false
                   ? gridform(modelList)
                   : listform(modelList));
         }
-        //
-
       }
 
       if (state is ProducerErorState) {
@@ -139,7 +158,11 @@ class _FirstPageState extends State<FirstPage> {
             crossAxisCount: 2, mainAxisExtent: 210),
         itemCount: modelList.length,
         itemBuilder: (context, index) {
-          // context.read<ModelsProvider>().changemodel(state.loadedModel[0]);
+          // int producer_idx = 0;
+          // for (Producer prod in producerlist) {
+          //   producer_idx = prod.modelSet!
+          //       .indexWhere((element) => element.id == modelList[index].id);
+          // }
           return InkWell(
             onDoubleTap: () {
               context.read<SimpleProvider>().changepage(2);
@@ -165,7 +188,7 @@ class _FirstPageState extends State<FirstPage> {
                           padding: EdgeInsets.only(top: 5, left: 10),
                           alignment: Alignment.topLeft,
                           child: Text(
-                            "${modelList[index].section.name}: ${modelList[index].producername}",
+                            "${uz_ru == Uz_ru.UZ ? modelList[index].section.nameuz : modelList[index].section.name}: ${modelList[index].producername} (${uz_ru == Uz_ru.RU ? modelList[index].country.toString().toLowerCase() : modelList[index].countryuz.toString().toLowerCase()})", //
                             style: TextStyle(
                                 color: Colors.indigo,
                                 fontFamily: Ui.textstyle,
@@ -193,7 +216,7 @@ class _FirstPageState extends State<FirstPage> {
                           padding: EdgeInsets.only(right: 10),
                           alignment: Alignment.bottomRight,
                           child: Text(
-                            "цены от ",
+                            Ui.cena[uz_ru]!,
                             style: TextStyle(
                                 // fontFamily: Ui.textstyle,
                                 fontStyle: FontStyle.italic,
@@ -265,7 +288,7 @@ class _FirstPageState extends State<FirstPage> {
                                 Container(
                                   alignment: Alignment.center,
                                   child: Text(
-                                    "${modelList[index].section.name}: ${modelList[index].producername}",
+                                    "${uz_ru == Uz_ru.UZ ? modelList[index].section.nameuz : modelList[index].section.name}: ${modelList[index].producername} (${uz_ru == Uz_ru.RU ? modelList[index].country.toString().toLowerCase() : modelList[index].countryuz.toString().toLowerCase()})", //
                                     style: TextStyle(
                                         fontFamily: Ui.textstyle,
                                         fontWeight: FontWeight.w200,
@@ -287,7 +310,7 @@ class _FirstPageState extends State<FirstPage> {
                                 ),
                                 Container(
                                   alignment: Alignment.bottomRight,
-                                  child: Text("цены от ",
+                                  child: Text(Ui.cena[uz_ru]!,
                                       style: TextStyle(
                                           fontStyle: FontStyle.italic,
                                           fontWeight: FontWeight.w200)),
@@ -300,7 +323,8 @@ class _FirstPageState extends State<FirstPage> {
                                         fontSize: 18,
                                         color: Colors.indigo,
                                         fontStyle: FontStyle.italic,
-                                        fontWeight: FontWeight.w200),
+                                        fontWeight: FontWeight.w200,
+                                        fontFamily: 'Oswald'),
                                   ),
                                 )
                               ],

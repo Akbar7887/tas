@@ -5,26 +5,29 @@ enum Uz_ru { UZ, RU }
 class Ui {
   static final String name = "ООО   \"TAS\"";
   static final String fullname = "ООО \"TEXNIKA ADVANCE SERVICE\"";
-  static final String url = 'http://195.158.30.101:39547/api/'; //'http://localhost:8083/api/';//'http://195.158.30.101:39547/api/';// //;
+  static final String url =
+      'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
+  // static final String url = 'http://localhost:8083/api/';
   static final String phone = "+998 78 147 00 80";
   static final String textstyle = "Oswald";
   static final String telegram = 't.me/tasuzcom';
+  static final String inhstagram =
+      'www.instagram.com/p/CfLO258orDI/?igshid=MDJmNzVkMjY=';
+  static final String facebook = 'www.facebook.com/tasuzcom/';
 
   //=============== Section ===================
   static final Map<dynamic, String> catalogs = {
-    Uz_ru.UZ:
-    "Kataloglar",
-    Uz_ru.RU:
-    "Каталоги"
+    Uz_ru.UZ: "Kataloglar",
+    Uz_ru.RU: "Каталоги"
   };
 
-  //===============Adres =========================
+  //===============Adress =========================
 
   static final Map<dynamic, String> adress = {
     Uz_ru.UZ:
         "Manzil: Toshkent shaxar, Yunusobod tumani, A.Temur 95 uy («UzOman Tower»), 5 qavat, 505 offis",
     Uz_ru.RU:
-        "Адес: Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower», 5 этаж"
+    "Адес: Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower», 5 этаж 505 оффисе"
   };
   static final Map<dynamic, String> adressfix = {
     Uz_ru.UZ: "Манзилимиз",
@@ -53,7 +56,8 @@ class Ui {
     Uz_ru.RU: "Имеем авторизацию на оказание сервисных услуг."
   };
   static final Map<dynamic, String> descriptionf = {
-    Uz_ru.UZ: "Biz qurilish, yo‘l, karyerli maxsus texnikaning to‘liq ko‘lamini ishlab chiqaruvchi kompaniyalar va yuqori jahon standartlari darajasida beton va asfaltni ishlab chiqaruvchi zavodlar bilan hamkorlik qilamiz.",
+    Uz_ru.UZ:
+        "Biz qurilish, yo‘l, karyerli maxsus texnikaning to‘liq ko‘lamini ishlab chiqaruvchi kompaniyalar va yuqori jahon standartlari darajasida beton va asfaltni ishlab chiqaruvchi zavodlar bilan hamkorlik qilamiz.",
     Uz_ru.RU:
         "Мы сотрудничаем с компаниями, которые производят весь спектр строительной, дорожной, карьерной спецтехники и заводов по производству бетона и асфальта на уровне высших мировых стандартов."
   };
@@ -62,6 +66,10 @@ class Ui {
   static final Map<dynamic, String> f1 = {
     Uz_ru.UZ: "Bugun savdoda:",
     Uz_ru.RU: "Сегодня на продаже:"
+  };
+  static final Map<dynamic, String> cena = {
+    Uz_ru.UZ: "boshlang'ich narxi:",
+    Uz_ru.RU: "цены от:"
   };
 
   // ==========description_page =============

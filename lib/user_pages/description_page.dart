@@ -21,6 +21,21 @@ class DescriptionPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButton(
+                    onPressed: () {
+                      context.read<SimpleProvider>().changepage(3);
+                      context.read<SimpleProvider>().changetitle(
+                          Ui.d3[context.watch<SimpleProvider>().getuzru]!);
+                    },
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.amberAccent[100])),
+                    child:
+                        Text(Ui.h2[context.watch<SimpleProvider>().getuzru]!))),
+            Divider(),
+            Container(
               child: TabBar(
                   // controller: _tabController,
                   tabs: [
@@ -30,12 +45,12 @@ class DescriptionPage extends StatelessWidget {
             ),
             Expanded(child: TabBarView(
                 // controller: _tabController,
-                children: [description(context,modelSet), options(modelSet)])),
+                children: [description(context, modelSet), options(modelSet)])),
           ],
         ));
   }
 
-  Widget description(BuildContext context,ModelSet modelSet) {
+  Widget description(BuildContext context, ModelSet modelSet) {
     return ListView(
       children: [
         Container(
@@ -57,7 +72,9 @@ class DescriptionPage extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.w200, fontFamily: "Oswald"),
                 ),
-                SizedBox(width: 5,),
+                SizedBox(
+                  width: 5,
+                ),
                 Text(
                   "${modelSet.name}",
                   style: TextStyle(fontFamily: "OpenSans", fontSize: 20),
@@ -110,10 +127,10 @@ class DescriptionPage extends StatelessWidget {
                     //     .optionConstant?.namerus!
                     //     .compareTo(b.optionConstant?.namerus!));
                     //
-                    if(context.watch<SimpleProvider>().getuzru.name == "RU"){
+                    if (context.watch<SimpleProvider>().getuzru.name == "RU") {
                       textconstat =
                           modelSet.optionSet?[idx].optionConstant?.namerus;
-                    }else{
+                    } else {
                       textconstat =
                           modelSet.optionSet?[idx].optionConstant?.nameuz;
                     }

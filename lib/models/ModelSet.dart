@@ -10,6 +10,8 @@ class ModelSet {
   String description;
   String producername;
   Section? section;
+  String? country;
+  String? countryuz;
   List<OptionSet>? optionSet;
 
   ModelSet(
@@ -21,7 +23,9 @@ class ModelSet {
       required this.description,
       required this.producername,
       required this.section,
-      required this.optionSet});
+      required this.optionSet,
+      this.country,
+      this.countryuz});
 
   factory ModelSet.fromJson(Map<String, dynamic> json) {
     return ModelSet(

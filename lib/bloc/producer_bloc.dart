@@ -26,4 +26,8 @@ class ProducerBloc extends Bloc<ProducerEvent, ProducerState> {
       emit(ProducerEmtyState());
     });
   }
+
+  Future<List<Producer>> getAll() async {
+    return await producerRepository.getAllProducers();
+  }
 }

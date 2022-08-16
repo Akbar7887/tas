@@ -69,7 +69,7 @@ class _AdressState extends State<Adress> {
       children: [
         Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+          padding: EdgeInsets.only(left: 20, right: 20),
           child: Text(
             Ui.adressfix[context.watch<SimpleProvider>().getuzru]!,
             style: TextStyle(
@@ -78,6 +78,7 @@ class _AdressState extends State<Adress> {
                 fontSize: 20),
           ),
         ),
+        Divider(),
         Container(
           alignment: Alignment.topLeft,
           padding: EdgeInsets.only(left: 20, right: 20),
