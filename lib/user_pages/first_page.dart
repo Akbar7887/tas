@@ -22,7 +22,7 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
   bool formlist = false;
-  final numberFormat = NumberFormat.simpleCurrency(locale: "UZ");
+  final numberFormat = NumberFormat.decimalPattern('en_us');
   List<Producer> producerlist = [];
   ProducerBloc? producerBloc;
   List<ModelSet> modelList = [];
@@ -114,9 +114,11 @@ class _FirstPageState extends State<FirstPage> {
         for (Producer prod in producerlist) {
           // modelList!.addAll(prod.modelSet!);
           for (ModelSet modelSet in prod.modelSet!) {
-            modelSet.country = prod.country;
-            modelSet.countryuz = prod.countryuz;
-            modelList.add(modelSet);
+            if (modelSet.active == 'ACTIVE') {
+              modelSet.country = prod.country;
+              modelSet.countryuz = prod.countryuz;
+              modelList.add(modelSet);
+            }
           }
         }
         SectionProvider sectionProvider = context.watch<SectionProvider>();
@@ -227,7 +229,7 @@ class _FirstPageState extends State<FirstPage> {
                           padding: EdgeInsets.only(right: 10),
                           alignment: Alignment.bottomRight,
                           child: Text(
-                            '${numberFormat.format(modelList[index].price)}',
+                            '${numberFormat.format(modelList[index].priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
                             style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: Ui.textstyle,
@@ -318,7 +320,8 @@ class _FirstPageState extends State<FirstPage> {
                                 Container(
                                   alignment: Alignment.bottomRight,
                                   child: Text(
-                                    "${numberFormat.format(modelList[index].price)}",
+                                    '${numberFormat.format(modelList[index].priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
+
                                     style: TextStyle(
                                         fontSize: 18,
                                         color: Colors.indigo,

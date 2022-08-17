@@ -1,5 +1,3 @@
-
-
 enum Uz_ru { UZ, RU }
 
 class Ui {
@@ -7,7 +5,7 @@ class Ui {
   static final String fullname = "ООО \"TEXNIKA ADVANCE SERVICE\"";
   static final String url =
       'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
-  // static final String url = 'http://localhost:8083/api/';
+  //static final String url = 'http://localhost:8083/api/';
   static final String phone = "+998 78 147 00 80";
   static final String textstyle = "Oswald";
   static final String telegram = 't.me/tasuzcom';
@@ -27,7 +25,7 @@ class Ui {
     Uz_ru.UZ:
         "Manzil: Toshkent shaxar, Yunusobod tumani, A.Temur 95 uy («UzOman Tower»), 5 qavat, 505 offis",
     Uz_ru.RU:
-    "Адес: Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower», 5 этаж 505 оффисе"
+        "Адес: Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower», 5 этаж 505 оффисе"
   };
   static final Map<dynamic, String> adressfix = {
     Uz_ru.UZ: "Манзилимиз",
@@ -36,7 +34,8 @@ class Ui {
 
   //=========about_company=============================
   static final Map<dynamic, String> description = {
-    Uz_ru.UZ: "\"Texnika Advans Servis\" XXR dan maxsus texnika, uskunalar va ehtiyot qismlarini yetkazib berishni tashkillashtirish bo‘yicha eng ishonchli kompaniyalardan biri bo‘lib hisoblanadi.",
+    Uz_ru.UZ:
+        "\"Texnika Advans Servis\" XXR dan maxsus texnika, uskunalar va ehtiyot qismlarini yetkazib berishni tashkillashtirish bo‘yicha eng ishonchli kompaniyalardan biri bo‘lib hisoblanadi.",
     Uz_ru.RU:
         "Texnika Advans Servis является одной из надежных компаний по организации поставок спецтехники, оборудования и запчастей из КНР."
   };
@@ -47,7 +46,8 @@ class Ui {
   };
 
   static final Map<dynamic, String> descriptionservice = {
-    Uz_ru.UZ: "\"Texnika Advans Servis\" XXR dan maxsus texnika, uskunalar va ehtiyot qismlarini yetkazib berishni tashkillashtirish bo‘yicha eng ishonchli kompaniyalardan biri bo‘lib hisoblanadi.",
+    Uz_ru.UZ:
+        "\"Texnika Advans Servis\" XXR dan maxsus texnika, uskunalar va ehtiyot qismlarini yetkazib berishni tashkillashtirish bo‘yicha eng ishonchli kompaniyalardan biri bo‘lib hisoblanadi.",
     Uz_ru.RU:
         "Biz maxsus texnikani (XCMG, SHANTUI, SHACMAN, JONYANG, WEICHAI POWER, SHANGHAI DEISEL va boshq.) ishlab chiqaruvchi zavodlar tomonidan, maxsus texnikaga kafolatlangan va kafolatdan keyingi ta’mirlash xizmatlarini ko‘rsatish uchun vakolat berilgan kompaniyamiz. TAS servis markazi — bu barcha turdagi ta’mirlash ishlarini bajarish va sifatli xizmat ko‘rsatish uchun zamonaviy uskunalarga ega yuqori darajali texnik baza."
   };
@@ -67,6 +67,11 @@ class Ui {
     Uz_ru.UZ: "Bugun savdoda:",
     Uz_ru.RU: "Сегодня на продаже:"
   };
+  static final Map<dynamic, String> excchange = {
+    Uz_ru.UZ: "so'm:",
+    Uz_ru.RU: "сум"
+  };
+
   static final Map<dynamic, String> cena = {
     Uz_ru.UZ: "boshlang'ich narxi:",
     Uz_ru.RU: "цены от:"
@@ -137,7 +142,8 @@ class Ui {
   };
 
   static final Map<dynamic, String> c7 = {
-    Uz_ru.UZ: "Sizning murojatingiz qabul qilindi! Siz bilan yaqin orada boglanishadi",
+    Uz_ru.UZ:
+        "Sizning murojatingiz qabul qilindi! Siz bilan yaqin orada boglanishadi",
     Uz_ru.RU: "Ваше заявка принята Менеджеры свяжутся с Вами !"
   };
 

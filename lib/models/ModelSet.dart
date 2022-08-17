@@ -6,7 +6,8 @@ class ModelSet {
   int id;
   String imagepath;
   String name;
-  double price;
+  double? price;
+  double? priceuzs;
   String description;
   String producername;
   Section? section;
@@ -19,7 +20,8 @@ class ModelSet {
       required this.id,
       required this.imagepath,
       required this.name,
-      required this.price,
+      this.price,
+      this.priceuzs,
       required this.description,
       required this.producername,
       required this.section,
@@ -34,6 +36,7 @@ class ModelSet {
       imagepath: json['imagepath'],
       name: json['name'],
       price: json['price'],
+      priceuzs: json['priceuzs'],
       description: json['description'],
       producername: json['producername'],
       section:
@@ -53,6 +56,7 @@ class ModelSet {
     data['imagepath'] = this.imagepath;
     data['name'] = this.name;
     data['price'] = this.price;
+    data['priceuzs'] = this.priceuzs;
     data['description'] = this.description;
     data['producername'] = this.producername;
     if (this.section != null) {

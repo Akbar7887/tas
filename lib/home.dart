@@ -4,14 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:provider/provider.dart';
-import 'package:tas/bloc/customer_bloc.dart';
-import 'package:tas/bloc/newscompany_bloc.dart';
-import 'package:tas/bloc/producer_bloc.dart';
-import 'package:tas/bloc/producer_event.dart';
-import 'package:tas/bloc/section_bloc.dart';
 import 'package:tas/provider/section_provider.dart';
 import 'package:tas/provider/simle_provider.dart';
-import 'package:tas/services/producer_repository.dart';
 import 'package:tas/user_pages/about_company.dart';
 import 'package:tas/user_pages/adress.dart';
 import 'package:tas/user_pages/customer_form.dart';
@@ -69,36 +63,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-        create: (context) => Repository(),
-        child: MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) =>
-                    ProducerBloc(producerRepository: context.read<Repository>())
-                      ..add(ProducerLoadEvent()),
-              ),
-              // BlocProvider(
-              //   create: (context) =>
-              //       ModelBloc(repository: context.read<Repository>())
-              //         ..add(ProducerLoadEvent()),
-              // ),
-              BlocProvider(
-                create: (context) =>
-                    CustomerBloc(repository: context.read<Repository>()),
-              ),
-              BlocProvider(
-                create: (context) =>
-                    SectionBloc(repository: context.read<Repository>())
-                      ..add(ProducerLoadEvent()),
-              ),
-              BlocProvider(
-                create: (context) =>
-                    NewsCompanyBloc(repository: context.read<Repository>())
-                      ..add(ProducerLoadEvent()),
-              ),
-            ],
-            child: Scaffold(
+    return Scaffold(
                 appBar: AppBar(
                   backgroundColor: Colors.amberAccent[100],
                   elevation: 1,
@@ -279,7 +244,7 @@ class _HomeState extends State<Home> {
 
                     currentindex = index;
                   },
-                ))));
+                ));
   }
 
   selectPage(int page) {

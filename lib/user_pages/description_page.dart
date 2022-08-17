@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:tas/models/ModelSet.dart';
 import 'package:tas/provider/models_provider.dart';
 import 'package:tas/provider/simle_provider.dart';
@@ -51,6 +52,7 @@ class DescriptionPage extends StatelessWidget {
   }
 
   Widget description(BuildContext context, ModelSet modelSet) {
+    final numberFormat = NumberFormat.decimalPattern('en_us');
     return ListView(
       children: [
         Container(
@@ -81,6 +83,18 @@ class DescriptionPage extends StatelessWidget {
                 ),
               ],
             )),
+        Container(
+          padding: EdgeInsets.only(left: 10),
+          child: Text(
+            '${Ui.cena[context.watch<SimpleProvider>().getuzru]}: ${numberFormat.format(modelSet.priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
+            style: TextStyle(
+                fontSize: 18,
+                color: Colors.indigo,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Oswald'),
+          ),
+        ),
         Container(
           width: 150,
           // alignment: Alignment.topRight,

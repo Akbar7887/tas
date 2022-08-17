@@ -1,7 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tas/bloc/customer_bloc.dart';
+import 'package:tas/bloc/newscompany_bloc.dart';
+import 'package:tas/bloc/producer_bloc.dart';
+import 'package:tas/bloc/producer_event.dart';
+import 'package:tas/bloc/section_bloc.dart';
 
+import '../bloc/producer_bloc.dart';
+import '../bloc/producer_event.dart';
 import '../home.dart';
+import '../services/producer_repository.dart';
 
 double opacityLevel = 1.0;
 
@@ -17,46 +26,68 @@ class _ZeroPageState extends State<ZeroPage> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: getHomePage(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return snapshot.data as Widget;
-          } else {
-            return Scaffold(
-                backgroundColor: Colors.yellow,
-                body: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/logo.png',
-                        width: 200,
-                        height: 200,
-                      ),
-                      Divider(),
-
-                      Image.asset(
-                        "assets/images/xcmg.png",
-                        width: 200,
-                        height: 100,
-                      ),
-                      Divider(),
-                      Image.asset("assets/images/shacman.png",
-                          width: 200, height: 100),
-                      Divider(),
-                      Image.asset("assets/images/shantui.png",
-                          width: 200, height: 100),
-                      Divider(),
-                      Image.asset("assets/images/weichan.png",
-                          width: 200, height: 100),
-                      Divider(),
-
-                    ],
-                  ),
-                ));
-          }
-        });
+    return RepositoryProvider(
+        create: (context) => Repository(),
+        child: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    ProducerBloc(producerRepository: context.read<Repository>())
+                      ..add(ProducerLoadEvent()),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    CustomerBloc(repository: context.read<Repository>()),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    SectionBloc(repository: context.read<Repository>())
+                      ..add(ProducerLoadEvent()),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    NewsCompanyBloc(repository: context.read<Repository>())
+                      ..add(ProducerLoadEvent()),
+              ),
+            ],
+            child: FutureBuilder(
+                future: getHomePage(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return snapshot.data as Widget;
+                  } else {
+                    return Scaffold(
+                        backgroundColor: Colors.yellow,
+                        body: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/logo.png',
+                                width: 200,
+                                height: 200,
+                              ),
+                              Divider(),
+                              Image.asset(
+                                "assets/images/xcmg.png",
+                                width: 200,
+                                height: 100,
+                              ),
+                              Divider(),
+                              Image.asset("assets/images/shacman.png",
+                                  width: 200, height: 100),
+                              Divider(),
+                              Image.asset("assets/images/shantui.png",
+                                  width: 200, height: 100),
+                              Divider(),
+                              Image.asset("assets/images/weichan.png",
+                                  width: 200, height: 100),
+                              Divider(),
+                            ],
+                          ),
+                        ));
+                  }
+                })));
   }
 
   void _changeOpacity() {
