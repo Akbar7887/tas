@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:tas/models/ModelSet.dart';
 
-class ModelsProvider with ChangeNotifier{
-
+class ModelsProvider with ChangeNotifier {
   ModelSet? modelSet = null;
+  List<ModelSet> listModel = [];
 
   ModelSet get getmodel => modelSet!;
 
-  void changemodel(ModelSet newmodelSet){
+  List<ModelSet> get getlist => listModel;
 
+  void changemodel(ModelSet newmodelSet) {
     this.modelSet = newmodelSet;
-    notifyListeners();
+    // notifyListeners();
   }
 
+  void changeListmodel(List<ModelSet> list) {
+    this.listModel = list;
+    // notifyListeners();
+  }
 }

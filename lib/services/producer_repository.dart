@@ -12,8 +12,8 @@ class Repository {
 
   Future<List<ModelSet>> getAllModels() => _apiProvider.getModelAll();
 
-  Future<Customer> postCustomer(Customer customer) =>
-      _apiProvider.postCustomer(customer);
+  Future<Customer> postCustomer(Customer customer, String model_id) =>
+      _apiProvider.postCustomer(customer, model_id);
 
   Future<List<Section>> getSections() => _apiProvider.getSection();
 

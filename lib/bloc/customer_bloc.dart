@@ -11,21 +11,11 @@ class CustomerBloc extends Cubit<ProducerState> {
 
   CustomerBloc({required this.repository}) : super(ProducerEmtyState()) {
 
-    void customerpost(Customer customer) => repository.postCustomer(customer);
+    void customerpost(Customer customer, String model_id) => repository.postCustomer(customer, model_id);
 
-    // on<ProducerLoadEvent>((event, emit) async {
-    //   emit(ProducerLoadingState());
-    //
-    //   try {
-    //     final Customer loadedcustomer = await repository.postCustomer(customer!);
-    //     emit(CustomerLoadedState(loadedCustomer: loadedcustomer));
-    //   } catch (_) {
-    //     throw Exception(ProducerErorState());
-    //   }
-    // });
-    //
-    // on<ProducerClearEvent>((event, emit) {
-    //   emit(ProducerEmtyState());
-    // });
+  }
+
+  Future<Customer> post(Customer customer, String model_id){
+    return repository.postCustomer(customer, model_id);
   }
 }

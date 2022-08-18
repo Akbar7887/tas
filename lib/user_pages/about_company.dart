@@ -20,10 +20,10 @@ class AboutCompany extends StatelessWidget {
                       TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
                   tabs: [
                     Tab(
-                      text: "О Компании",
+                      text: Ui.tab[context.watch<SimpleProvider>().getuzru],
                     ),
                     Tab(
-                      text: "Сертификаты",
+                      text: Ui.sertifikat[context.watch<SimpleProvider>().getuzru],
                     ),
                   ]),
             ),
@@ -35,6 +35,7 @@ class AboutCompany extends StatelessWidget {
 
   Widget about(BuildContext context) {
     return ListView(
+      scrollDirection: Axis.vertical,
       children: [
         SizedBox(
           height: 20,
@@ -61,7 +62,7 @@ class AboutCompany extends StatelessWidget {
             style: TextStyle(
                 fontFamily: Ui.textstyle,
                 color: Colors.black,
-                fontSize: 20,
+                fontSize: 15,
                 fontWeight: FontWeight.w500,
                 fontStyle: FontStyle.italic),
           ),
@@ -69,9 +70,10 @@ class AboutCompany extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(10),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 50,
+                height: 40,
 
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.indigo, width: 0.2),
@@ -80,11 +82,12 @@ class AboutCompany extends StatelessWidget {
                 // margin: EdgeInsets.only(left: 10, right: 10),
                 child: Image.asset(
                   "assets/images/xcmg.png",
-                  width: 100,
+                  width: 80,
                 ),
               ),
+              SizedBox(width: 5,),
               Container(
-                height: 50,
+                height: 40,
 
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.indigo, width: 0.2),
@@ -93,11 +96,12 @@ class AboutCompany extends StatelessWidget {
                 // margin: EdgeInsets.only(left: 10, right: 10),
                 child: Image.asset(
                   "assets/images/shantui.png",
-                  width: 100,
+                  width: 80,
                 ),
               ),
+              SizedBox(width: 5,),
               Container(
-                height: 50,
+                height: 40,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.indigo, width: 0.2),
                 ),
@@ -105,19 +109,21 @@ class AboutCompany extends StatelessWidget {
                 // margin: EdgeInsets.only(left: 10, right: 10),
                 child: Image.asset(
                   "assets/images/weichan.png",
-                  width: 100,
+                  width: 80,
                 ),
               ),
             ],
           ),
         ),
         Container(
-          height: 50,
+          height: 40,
+          width: 80,
+          margin: EdgeInsets.only(left: 40, right: 40),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.indigo, width: 0.2),
           ),
           padding: EdgeInsets.all(5),
-          margin: EdgeInsets.only(left: 10, right: 260),
+          // margin: EdgeInsets.only(left: 10, right: 260),
           child: Image.asset(
             "assets/images/shacman.png",
           ),
@@ -153,6 +159,9 @@ class AboutCompany extends StatelessWidget {
           // width: 150,height: 150,
         ),
         Divider(),
+        SizedBox(
+          height: 40,
+        ),
         Container(
           padding: EdgeInsets.only(left: 10, right: 10),
           child: Text(

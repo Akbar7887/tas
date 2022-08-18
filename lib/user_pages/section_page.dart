@@ -4,10 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:tas/bloc/producer_state.dart';
 import 'package:tas/bloc/section_bloc.dart';
+import 'package:tas/models/ModelSet.dart';
+import 'package:tas/models/Section.dart';
+import 'package:tas/provider/models_provider.dart';
 import 'package:tas/provider/section_provider.dart';
 import 'package:tas/provider/simle_provider.dart';
 
 import '../models/ui.dart';
+
+List<Section> listSection = [];
 
 class SectionPage extends StatelessWidget {
   const SectionPage({Key? key}) : super(key: key);
@@ -23,9 +28,20 @@ class SectionPage extends StatelessWidget {
         if (state is ProducerLoadingState) {
           return Center(child: CircularProgressIndicator());
         }
+        listSection.clear();
         if (state is SectionLoadedState) {
-          //
-          return listform(context, state);
+         List<Section> listSection1 = state.loadedSection;
+
+          ModelsProvider modelsProvider = Provider.of<ModelsProvider>(context);
+          List<ModelSet> modellist = modelsProvider.getlist;
+          for (Section section in listSection1) {
+            Iterable result = modellist.where((element) => element.section!.id == section.id);
+            if(result.length != 0){
+              listSection.add(section);
+            }
+          }
+
+          return listform(context);
         }
 
         if (state is ProducerErorState) {
@@ -39,24 +55,24 @@ class SectionPage extends StatelessWidget {
     );
   }
 
-  Widget listform(context, state) {
+  Widget listform(context) {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.only(top: 20, bottom: 20),
+          padding: EdgeInsets.only(top: 10, bottom: 10),
           child: Text(
             Ui.catalogs[Provider.of<SimpleProvider>(context).getuzru]!,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
-        Expanded(child: getListView(state))
+        Expanded(child: getListView())
       ],
     );
   }
 
-  Widget getListView(state) {
+  Widget getListView() {
     return ListView.builder(
-        itemCount: state.loadedSection.length,
+        itemCount: listSection.length,
         itemBuilder: (context, index) {
           Uz_ru uz_ru = Provider.of<SimpleProvider>(context).getuzru;
 
@@ -64,7 +80,7 @@ class SectionPage extends StatelessWidget {
               onTap: () {
                 context
                     .read<SectionProvider>()
-                    .changeSection(state.loadedSection[index]);
+                    .changeSection(listSection[index]);
                 context.read<SimpleProvider>().changepage(1);
               },
               child: Container(
@@ -91,7 +107,7 @@ class SectionPage extends StatelessWidget {
                               width: 50,
                               alignment: Alignment.center,
                               child: Image.network(
-                                "${Ui.url}download/section/${state.loadedSection[index].imagepath}",
+                                "${Ui.url}download/section/${listSection[index].imagepath}",
                                 height: 180,
                                 width: 200,
                               ),
@@ -100,20 +116,18 @@ class SectionPage extends StatelessWidget {
                               color: Colors.black26,
                             ),
                             Expanded(
-                                child: Wrap(
-                              alignment: WrapAlignment.center,
-                              children: [
-                                Text(
-                                    (uz_ru == Uz_ru.UZ
-                                            ? state.loadedSection[index].name
-                                            : state.loadedSection[index].nameuz)
-                                        .toString()
-                                        .toUpperCase(),
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: "Oswald",
-                                    )),
-                              ],
+                                child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                  (uz_ru == Uz_ru.UZ
+                                          ? listSection[index].nameuz
+                                          : listSection[index].name)
+                                      .toString()
+                                      .toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: Ui.textstyle,
+                                  )),
                             )),
                           ],
                         ))),

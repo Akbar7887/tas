@@ -69,12 +69,12 @@ class _AdressState extends State<Adress> {
       children: [
         Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: EdgeInsets.only(left: 20, right: 20, top: 10),
           child: Text(
             Ui.adressfix[context.watch<SimpleProvider>().getuzru]!,
             style: TextStyle(
-                fontFamily: "Oswald",
-                fontWeight: FontWeight.w900,
+                fontFamily: Ui.textstyle,
+                fontWeight: FontWeight.w500,
                 fontSize: 20),
           ),
         ),
@@ -85,7 +85,7 @@ class _AdressState extends State<Adress> {
           child: Text(
             Ui.adress[context.watch<SimpleProvider>().getuzru]!,
             style: TextStyle(
-                fontFamily: "Oswald",
+                fontFamily: Ui.textstyle,
                 fontWeight: FontWeight.w300,
                 fontSize: 20),
           ),
@@ -96,7 +96,7 @@ class _AdressState extends State<Adress> {
           child: Text(
             "Телефон: ${Ui.phone}",
             style: TextStyle(
-                fontFamily: "Oswald",
+                fontFamily: Ui.textstyle,
                 fontWeight: FontWeight.w300,
                 fontSize: 20),
           ),

@@ -27,8 +27,8 @@ class DescriptionPage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       context.read<SimpleProvider>().changepage(3);
-                      context.read<SimpleProvider>().changetitle(
-                          Ui.d3[context.watch<SimpleProvider>().getuzru]!);
+                      // context.read<SimpleProvider>().changetitle(
+                      //     Ui.d3[context.watch<SimpleProvider>().getuzru]!);
                     },
                     style: ButtonStyle(
                         backgroundColor:
@@ -62,7 +62,7 @@ class DescriptionPage extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.w200,
                 fontSize: 20,
-                fontFamily: "Oswald"),
+                fontFamily: Ui.textstyle),
           ),
         ),
         Container(
@@ -72,14 +72,14 @@ class DescriptionPage extends StatelessWidget {
                 Text(
                   "модель:",
                   style: TextStyle(
-                      fontWeight: FontWeight.w200, fontFamily: "Oswald"),
+                      fontWeight: FontWeight.w200, fontFamily: Ui.textstyle),
                 ),
                 SizedBox(
                   width: 5,
                 ),
                 Text(
                   "${modelSet.name}",
-                  style: TextStyle(fontFamily: "OpenSans", fontSize: 20),
+                  style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20),
                 ),
               ],
             )),
@@ -92,7 +92,7 @@ class DescriptionPage extends StatelessWidget {
                 color: Colors.indigo,
                 fontStyle: FontStyle.italic,
                 fontWeight: FontWeight.w600,
-                fontFamily: 'Oswald'),
+                fontFamily: Ui.textstyle),
           ),
         ),
         Container(

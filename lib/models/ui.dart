@@ -1,13 +1,15 @@
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 enum Uz_ru { UZ, RU }
 
 class Ui {
-  static final String name = "ООО   \"TAS\"";
-  static final String fullname = "ООО \"TEXNIKA ADVANCE SERVICE\"";
-  static final String url =
-      'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
-  //static final String url = 'http://localhost:8083/api/';
+  static final String name = "Компания \"TAS\"";
+  static final String fullname = "ЧП \"TEXNIKA ADVANCE SERVICE\"";
+  static final String url = 'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
+  // static final String url = 'http://localhost:8083/api/';
   static final String phone = "+998 78 147 00 80";
-  static final String textstyle = "Oswald";
+  static final String textstyle = "OpenSans";
   static final String telegram = 't.me/tasuzcom';
   static final String inhstagram =
       'www.instagram.com/p/CfLO258orDI/?igshid=MDJmNzVkMjY=';
@@ -33,6 +35,17 @@ class Ui {
   };
 
   //=========about_company=============================
+
+  static final Map<dynamic, String> tab = {
+    Uz_ru.UZ: "Kompanya haqida",
+    Uz_ru.RU: "О Компании"
+  };
+
+  static final Map<dynamic, String> sertifikat = {
+    Uz_ru.UZ: "Sertifikatlar",
+    Uz_ru.RU: "Сертификаты"
+  };
+
   static final Map<dynamic, String> description = {
     Uz_ru.UZ:
         "\"Texnika Advans Servis\" XXR dan maxsus texnika, uskunalar va ehtiyot qismlarini yetkazib berishni tashkillashtirish bo‘yicha eng ishonchli kompaniyalardan biri bo‘lib hisoblanadi.",
@@ -47,9 +60,9 @@ class Ui {
 
   static final Map<dynamic, String> descriptionservice = {
     Uz_ru.UZ:
-        "\"Texnika Advans Servis\" XXR dan maxsus texnika, uskunalar va ehtiyot qismlarini yetkazib berishni tashkillashtirish bo‘yicha eng ishonchli kompaniyalardan biri bo‘lib hisoblanadi.",
+        "Biz maxsus texnikani (XCMG, SHANTUI, SHACMAN, JONYANG, WEICHAI POWER, SHANGHAI DEISEL va boshq.) ishlab chiqaruvchi zavodlar tomonidan, maxsus texnikaga kafolatlangan va kafolatdan keyingi ta’mirlash xizmatlarini ko‘rsatish uchun vakolat berilgan kompaniyamiz. TAS servis markazi — bu barcha turdagi ta’mirlash ishlarini bajarish va sifatli xizmat ko‘rsatish uchun zamonaviy uskunalarga ega yuqori darajali texnik baza",
     Uz_ru.RU:
-        "Biz maxsus texnikani (XCMG, SHANTUI, SHACMAN, JONYANG, WEICHAI POWER, SHANGHAI DEISEL va boshq.) ishlab chiqaruvchi zavodlar tomonidan, maxsus texnikaga kafolatlangan va kafolatdan keyingi ta’mirlash xizmatlarini ko‘rsatish uchun vakolat berilgan kompaniyamiz. TAS servis markazi — bu barcha turdagi ta’mirlash ishlarini bajarish va sifatli xizmat ko‘rsatish uchun zamonaviy uskunalarga ega yuqori darajali texnik baza."
+        "Мы являемся компанией, авторизованной заводами производителями спецтехники (XCMG, SHANTUI, SHACMAN, JONYANG, WEICHAI POWER, SHANGHAI DEISEL и др.) на оказание услуг гарантийного и послегарантийного ремонта спецтехники."
   };
   static final Map<dynamic, String> tema2 = {
     Uz_ru.UZ: "Servis xizmatlarini ko‘rsatish uchun avtorizatsiyaga egamiz.",
@@ -68,7 +81,7 @@ class Ui {
     Uz_ru.RU: "Сегодня на продаже:"
   };
   static final Map<dynamic, String> excchange = {
-    Uz_ru.UZ: "so'm:",
+    Uz_ru.UZ: "so'm",
     Uz_ru.RU: "сум"
   };
 
@@ -100,13 +113,13 @@ class Ui {
   };
 
   static final Map<dynamic, String> h2 = {
-    Uz_ru.UZ: "Buyurtma",
+    Uz_ru.UZ: "Buyurtma qilish",
     Uz_ru.RU: "Далее (Заказать)"
   };
 
   static final Map<dynamic, String> h3 = {
     Uz_ru.UZ: "Manzil",
-    Uz_ru.RU: "Адреса"
+    Uz_ru.RU: "Адрес"
   };
 
   //========= Customer form ==================
@@ -152,4 +165,35 @@ class Ui {
         "YUQ setda muammo borligi sababli, Sizning murojatingiz qabul qilinmadi!",
     Uz_ru.RU: "Просим повторить заказ из за не поладки в сети!"
   };
+
+  static callInstagram() async {
+    String url = "https://${Ui.inhstagram}";
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false);
+    } else {
+      throw 'Could not url';
+    }
+  }
+
+  static callFacebook() async {
+    String url = "https://${Ui.facebook}";
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false);
+    } else {
+      throw 'Could not url';
+    }
+  }
+
+  static callTelegram() async {
+    String url = "https://${Ui.telegram}";
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false);
+    } else {
+      throw 'Could not url';
+    }
+  }
+
+  static callNumber() async {
+    bool? res = await FlutterPhoneDirectCaller.callNumber(Ui.phone);
+  }
 }

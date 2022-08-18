@@ -1,28 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:tas/provider/simle_provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../models/ui.dart';
 import '../provider/section_provider.dart';
 
 class DrawerHome extends StatelessWidget {
   const DrawerHome({Key? key}) : super(key: key);
-
-  _callNumber() async {
-    bool? res = await FlutterPhoneDirectCaller.callNumber(Ui.phone);
-  }
-
-  _callTelegram() async {
-    String url = "https://${Ui.telegram}";
-    if (await canLaunch(url)) {
-      await launch(url, forceSafariVC: false);
-    } else {
-      throw 'Could not url';
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,94 +19,98 @@ class DrawerHome extends StatelessWidget {
             SizedBox(
                 height: 220,
                 child: DrawerHeader(
-              decoration: BoxDecoration(
-                      color: Colors.amberAccent[100],
-                      borderRadius: BorderRadius.circular(30)),
+                  decoration: BoxDecoration(
+                    color: Colors.amberAccent[100],
+                    borderRadius: BorderRadius.circular(20),
+                    border:  Border.all(color: Colors.amber, width: 0.5)
+                  ),
                   child: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                     ),
                     child: Column(
-                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Row(
-                          //crossAxisAlignment: CrossAxisAlignment.,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                        Container(
-                          child: Text(
-                            "Компания ${Ui.name}",
-                            style: TextStyle(
-                                fontFamily: Ui.textstyle,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20),
-                          ),
-                        ),
-                        Spacer(
-                            // height: 10,
-                            ),
                         Image.asset(
                           "assets/images/logo.png",
                           width: 100,
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        "${Ui.fullname}",
-                        style: TextStyle(
-                            fontFamily: Ui.textstyle,
-                            fontWeight: FontWeight.w300,
-                            fontSize: 15),
-                      ),
-                    ),
-                    Spacer(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(
-                          Icons.phone_android_outlined,
-                          size: 20,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            _callNumber();
-                          },
+                        Container(
+                          alignment: Alignment.center,
                           child: Text(
-                            Ui.phone,
+                            "${Ui.fullname}",
                             style: TextStyle(
-                                fontFamily: Ui.textstyle, color: Colors.black),
+                                fontFamily: Ui.textstyle,
+                                fontWeight: FontWeight.w300,
+                                fontSize: 15),
                           ),
                         ),
+                        // Spacer(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.phone_android_outlined,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Ui.callNumber();
+                              },
+                              child: Text(
+                                Ui.phone,
+                                style: TextStyle(
+                                    fontFamily: Ui.textstyle,
+                                    color: Colors.black),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                Ui.callInstagram();
+                              },
+                              icon: Image.asset(
+                                'assets/images/Instagram_icon.png',
+                                width: 30,
+                                height: 30,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                Ui.callFacebook();
+                              },
+                              icon: Icon(
+                                Icons.facebook,
+                                color: Colors.blue,
+                                size: 30,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                Ui.callTelegram();
+                              },
+                              icon: Icon(
+                                Icons.telegram,
+                                color: Colors.blue,
+                                size: 30,
+                              ),
+                            ),
+                            // Text(Ui.telegram)
+                          ],
+                        )
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            _callTelegram();
-                          },
-                          icon: Icon(
-                            Icons.telegram,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        Text(Ui.telegram)
-                      ],
-                    )
-                  ],
+                  ),
+                ) // decoration: BoxDecoration(color: Colors.yellow),
                 ),
-              ),
-            )// decoration: BoxDecoration(color: Colors.yellow),
-            ),
             ListTile(
                 title: InkWell(
               onTap: () {
@@ -131,7 +120,7 @@ class DrawerHome extends StatelessWidget {
               child: Text("О компании",
                   style: TextStyle(
                       fontFamily: Ui.textstyle,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w500,
                       fontSize: 20)),
             )),
             Divider(),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:provider/provider.dart';
+import 'package:tas/provider/models_provider.dart';
 import 'package:tas/provider/section_provider.dart';
 import 'package:tas/provider/simle_provider.dart';
 import 'package:tas/user_pages/about_company.dart';
@@ -14,7 +15,6 @@ import 'package:tas/user_pages/first_page.dart';
 import 'package:tas/user_pages/news_page.dart';
 import 'package:tas/user_pages/section_page.dart';
 import 'package:tas/widgets/drawer_home.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'models/ui.dart';
 
@@ -29,37 +29,12 @@ _callNumber() async {
   bool? res = await FlutterPhoneDirectCaller.callNumber(Ui.phone);
 }
 
-_callTelegram() async {
-  String url = "https://${Ui.telegram}";
-  if (await canLaunch(url)) {
-    await launch(url, forceSafariVC: false);
-  } else {
-    throw 'Could not url';
-  }
-}
 
-_callInstagram() async {
-  String url = "https://${Ui.inhstagram}";
-  if (await canLaunch(url)) {
-    await launch(url, forceSafariVC: false);
-  } else {
-    throw 'Could not url';
-  }
-}
 
-_callFacebook() async {
-  String url = "https://${Ui.facebook}";
-  if (await canLaunch(url)) {
-    await launch(url, forceSafariVC: false);
-  } else {
-    throw 'Could not url';
-  }
-}
 
 class _HomeState extends State<Home> {
   int currentindex = 1;
   Uz_ru uz_ru = Uz_ru.UZ;
-  String textnext = Ui.h3[Uz_ru.UZ]!;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +61,7 @@ class _HomeState extends State<Home> {
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontFamily: "Times New Roman",
-                              fontSize: 25),
+                              fontSize: 22),
                         ),
                       ),
                     ],
@@ -99,7 +74,7 @@ class _HomeState extends State<Home> {
                       children: [
                         IconButton(
                           onPressed: () {
-                            _callInstagram();
+                            Ui.callInstagram();
                           },
                           icon: Image.asset(
                             'assets/images/Instagram_icon.png',
@@ -109,7 +84,7 @@ class _HomeState extends State<Home> {
                         ),
                         IconButton(
                           onPressed: () {
-                            _callFacebook();
+                            Ui.callFacebook();
                           },
                           icon: Icon(
                             Icons.facebook,
@@ -119,7 +94,7 @@ class _HomeState extends State<Home> {
                         ),
                         IconButton(
                           onPressed: () {
-                            _callTelegram();
+                            Ui.callTelegram();
                           },
                           icon: Icon(
                             Icons.telegram,
@@ -132,7 +107,7 @@ class _HomeState extends State<Home> {
                         ),
                         InkWell(
                           onTap: () {
-                            _callNumber();
+                            Ui.callNumber();
                           },
                           child: Icon(
                             Icons.phone_android_outlined,
@@ -163,7 +138,7 @@ class _HomeState extends State<Home> {
                           setState(() {
                             if (uz_ru == Uz_ru.UZ) {
                               uz_ru = Uz_ru.RU;
-                            } else {
+                            } else if(uz_ru == Uz_ru.RU) {
                               uz_ru = Uz_ru.UZ;
                             }
                             context.read<SimpleProvider>().changuzru(uz_ru);
@@ -203,43 +178,17 @@ class _HomeState extends State<Home> {
                           Icons.navigate_next_sharp,
                           color: Colors.black,
                         ),
-                        title: textnext)
+                        title: Ui.h3[uz_ru])
                   ],
                   onTap: (int index) {
                     if (index == 0) {
                       context.read<SectionProvider>().changeSection(null);
                       context.read<SimpleProvider>().changepage(1);
                       context.read<SimpleProvider>().changetitle(Ui.name);
-                      // setState(() {
-                      //   textnext = Ui.h2[uz_ru]!;
-                      // });
                     } else if (index == 1) {
                       context.read<SimpleProvider>().changepage(6);
-                      // setState(() {
-                      //   textnext = Ui.h3[uz_ru]!;
-                      // });
-                    } else if (context.read<SimpleProvider>().getpage == 1) {
-                      if (context.read<SimpleProvider>().getindexSelected !=
-                          -1) {
-                        context.read<SimpleProvider>().changepage(2);
-                      }
-                      // setState(() {
-                      //   textnext = Ui.h2[uz_ru]!;
-                      // });
-                    } else if (context.read<SimpleProvider>().getpage == 2) {
-                      context.read<SimpleProvider>().changepage(3);
-                      context.read<SimpleProvider>().changetitle(Ui.d3[uz_ru]!);
-                      // setState(() {
-                      //   textnext = "Далее";
-                      // });
-                    } else if (context.read<SimpleProvider>().getpage == 6) {
-                      // setState(() {
-                      //   textnext = Ui.h3[uz_ru]!;
-                      // });
+                    } else if (index == 2) {
                       context.read<SimpleProvider>().changepage(5);
-                    } else if (context.read<SimpleProvider>().getpage == 3) {
-                      context.read<SimpleProvider>().changepage(5);
-                      // exit(0);
                     }
 
                     currentindex = index;
@@ -251,25 +200,19 @@ class _HomeState extends State<Home> {
     switch (page) {
       case 1:
         return FirstPage();
-        break;
+
       case 2:
         return DescriptionPage();
-        break;
       case 3:
-        return CustomerForm();
-        break;
+        return CustomerForm(modelSet: context.watch<ModelsProvider>().getmodel);
       case 4:
         return AboutCompany();
-        break;
       case 5:
         return Adress();
-        break;
       case 6:
         return SectionPage();
-        break;
       case 7:
         return NewsPage();
-        break;
     }
   }
 }

@@ -59,7 +59,7 @@ class NewsPage extends StatelessWidget {
                               _list[index].title,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: "Oswald"),
+                                  fontFamily: Ui.textstyle),
                             ),
                           ),
                           SizedBox(
@@ -69,7 +69,7 @@ class NewsPage extends StatelessWidget {
                             _list[index].description,
                             style: TextStyle(
                                 fontWeight: FontWeight.w300,
-                                fontFamily: "Oswald",
+                                fontFamily: Ui.textstyle,
                                 fontSize: 17),
                           ),
                           Image.network(
@@ -82,7 +82,7 @@ class NewsPage extends StatelessWidget {
                               _list[index].date.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w300,
-                                  fontFamily: "Oswald",
+                                  fontFamily: Ui.textstyle,
                                   fontSize: 12),
                             ),
                           ),

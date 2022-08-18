@@ -28,17 +28,6 @@ class _FirstPageState extends State<FirstPage> {
   List<ModelSet> modelList = [];
   Uz_ru? uz_ru;
 
-  // Section? section;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // producerBloc = BlocProvider.of<ProducerBloc>(context);
-    // producerBloc!.getAll().then((value) {
-    //   producerlist = value;
-    // });
-  } // int indexSelected = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +46,7 @@ class _FirstPageState extends State<FirstPage> {
                 Ui.f1[context.watch<SimpleProvider>().getuzru]!,
                 style: TextStyle(
                     fontSize: 20,
-                    fontFamily: "Oswald",
+                    fontFamily: Ui.textstyle,
                     color: Colors.indigo,
                     fontWeight: FontWeight.w200),
               ),
@@ -113,14 +102,16 @@ class _FirstPageState extends State<FirstPage> {
 
         for (Producer prod in producerlist) {
           // modelList!.addAll(prod.modelSet!);
-          for (ModelSet modelSet in prod.modelSet!) {
-            if (modelSet.active == 'ACTIVE') {
+         List<ModelSet> modellist = prod.modelSet!.where((element) => element.active == 'ACTIVE').toList();
+          for (ModelSet modelSet in modellist) {
               modelSet.country = prod.country;
               modelSet.countryuz = prod.countryuz;
               modelList.add(modelSet);
-            }
           }
         }
+        ModelsProvider modelsProvider = Provider.of<ModelsProvider>(context);
+        modelsProvider.changeListmodel(modelList);
+
         SectionProvider sectionProvider = context.watch<SectionProvider>();
         Section? section = sectionProvider.getSection;
 
@@ -157,7 +148,7 @@ class _FirstPageState extends State<FirstPage> {
     return GridView.builder(
         // scrollDirection: Axis.vertical,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, mainAxisExtent: 210),
+            crossAxisCount: 2, mainAxisExtent: 270),
         itemCount: modelList.length,
         itemBuilder: (context, index) {
           // int producer_idx = 0;
@@ -166,25 +157,21 @@ class _FirstPageState extends State<FirstPage> {
           //       .indexWhere((element) => element.id == modelList[index].id);
           // }
           return InkWell(
-            onDoubleTap: () {
+            onTap: () {
               context.read<SimpleProvider>().changepage(2);
               context.read<SimpleProvider>().changetitle("Выше выбор!");
               context.read<SimpleProvider>().changeindexSelected(index);
               context.read<ModelsProvider>().changemodel(modelList[index]);
             },
-            onTap: () {
-              context.read<ModelsProvider>().changemodel(modelList[index]);
-              context.read<SimpleProvider>().changeindexSelected(index);
-            },
             child: Container(
                 // height: 350,
                 // padding: EdgeInsets.all(10),
-                color: index == context.watch<SimpleProvider>().getindexSelected
-                    ? Colors.yellow
-                    : Colors.white,
+                // color: index == context.watch<SimpleProvider>().getindexSelected
+                //     ? Colors.yellow
+                //     : Colors.white,
                 child: Card(
                   child: Column(
-                      // crossAxisAlignment: CrossAxisAlignment.stretch,
+                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           padding: EdgeInsets.only(top: 5, left: 10),
@@ -207,12 +194,15 @@ class _FirstPageState extends State<FirstPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w300),
                             )),
+                        Divider(),
                         Container(
+                          // alignment: Alignment.center,
                           child: Image.network(
                             "${Ui.url}download/model/${modelList[index].imagepath}",
-                            height: 80,
+                            height: 100,
                           ),
                         ),
+                        Spacer(),
                         Divider(),
                         Container(
                           padding: EdgeInsets.only(right: 10),
@@ -251,15 +241,11 @@ class _FirstPageState extends State<FirstPage> {
           // context.read<ModelsProvider>().changemodel(state.loadedModel[0]);
 
           return InkWell(
-              onDoubleTap: () {
+              onTap: () {
                 context.read<SimpleProvider>().changepage(2);
                 context.read<SimpleProvider>().changetitle("Выше выбор!");
                 context.read<SimpleProvider>().changeindexSelected(index);
                 context.read<ModelsProvider>().changemodel(modelList[index]);
-              },
-              onTap: () {
-                context.read<ModelsProvider>().changemodel(modelList[index]);
-                context.read<SimpleProvider>().changeindexSelected(index);
               },
               child: Container(
                 color: index == context.watch<SimpleProvider>().getindexSelected

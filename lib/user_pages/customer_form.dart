@@ -6,13 +6,14 @@ import 'package:tas/bloc/customer_bloc.dart';
 import 'package:tas/models/Customer.dart';
 import 'package:tas/models/CustomerOrder.dart';
 import 'package:tas/models/ModelSet.dart';
-import 'package:tas/provider/models_provider.dart';
 
 import '../models/ui.dart';
 import '../provider/simle_provider.dart';
 
 class CustomerForm extends StatefulWidget {
-  const CustomerForm({Key? key}) : super(key: key);
+  final ModelSet? modelSet;
+
+  const CustomerForm({required this.modelSet}) : super();
 
   @override
   State<CustomerForm> createState() => _CustomerFormState();
@@ -25,8 +26,15 @@ class _CustomerFormState extends State<CustomerForm> {
   final _formkeyfio = GlobalKey<FormState>();
   final _formkeyphone = GlobalKey<FormState>();
   final _formkeyemail = GlobalKey<FormState>();
+  late ModelSet modelSet;
+  late CustomerBloc customerBloc;
 
-  // bool validate = false;
+  @override
+  void initState() {
+    super.initState();
+    modelSet = widget.modelSet!;
+    customerBloc = BlocProvider.of<CustomerBloc>(context);
+  } // bool validate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +43,12 @@ class _CustomerFormState extends State<CustomerForm> {
     String answerfio =
         Ui.c2[context.watch<SimpleProvider>().getuzru].toString();
     String answerget =
-    Ui.c7[context.watch<SimpleProvider>().getuzru].toString();
+        Ui.c7[context.watch<SimpleProvider>().getuzru].toString();
     String answerunget =
-    Ui.c8[context.watch<SimpleProvider>().getuzru].toString();
+        Ui.c8[context.watch<SimpleProvider>().getuzru].toString();
 
-    ModelSet modelSet = context.watch<ModelsProvider>().getmodel;
+    // ModelSet modelSet = context.watch<ModelsProvider>().getmodel;
+
     return ListView(
       children: [
         Container(
@@ -49,7 +58,7 @@ class _CustomerFormState extends State<CustomerForm> {
             style: TextStyle(
                 fontWeight: FontWeight.w200,
                 fontSize: 20,
-                fontFamily: "Oswald"),
+                fontFamily: Ui.textstyle),
           ),
         ),
         Container(
@@ -89,8 +98,10 @@ class _CustomerFormState extends State<CustomerForm> {
               cursorColor: Colors.indigo,
               decoration: InputDecoration(
                   labelText: Ui.c1[context.watch<SimpleProvider>().getuzru],
-                  labelStyle:
-                      TextStyle(color: Colors.indigo, fontFamily: "Oswald",),
+                  labelStyle: TextStyle(
+                    color: Colors.indigo,
+                    fontFamily: "Oswald",
+                  ),
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         width: 1,
@@ -232,30 +243,29 @@ class _CustomerFormState extends State<CustomerForm> {
                     customerOrders: custmersorder,
                     email: _controlleremail.text,
                     name: _controllerfio.text,
-                    phone: _controllerphone.text);
+                    phone: _controllerphone.text,
+                    modelset: modelSet);
 
                 if (_controllerfio.text.isEmpty ||
                     _controllerphone.text.isEmpty) {
                   return;
                 }
-                context
-                    .read<CustomerBloc>()
-                    .repository
-                    .postCustomer(customer)
+                customerBloc
+                    .post(customer, modelSet.id.toString())
                     .then((value) {
                   _controllerphone.text = "";
                   _controllerfio.text = "";
                   _controllerphone.text = "";
 
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(answerget)));
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(answerget)));
                 }).catchError((onError) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(answerunget)));
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(answerunget)));
                 });
               },
               child: Text(
-                "Заказать ",
+                Ui.d3[context.watch<SimpleProvider>().getuzru]!,
                 style: TextStyle(
                     fontWeight: FontWeight.w200,
                     fontSize: 30,
