@@ -28,7 +28,6 @@ class _FirstPageState extends State<FirstPage> {
   List<ModelSet> modelList = [];
   Uz_ru? uz_ru;
 
-
   @override
   Widget build(BuildContext context) {
     uz_ru = Provider.of<SimpleProvider>(context).getuzru;
@@ -102,11 +101,13 @@ class _FirstPageState extends State<FirstPage> {
 
         for (Producer prod in producerlist) {
           // modelList!.addAll(prod.modelSet!);
-         List<ModelSet> modellist = prod.modelSet!.where((element) => element.active == 'ACTIVE').toList();
+          List<ModelSet> modellist = prod.modelSet!
+              .where((element) => element.active == 'ACTIVE')
+              .toList();
           for (ModelSet modelSet in modellist) {
-              modelSet.country = prod.country;
-              modelSet.countryuz = prod.countryuz;
-              modelList.add(modelSet);
+            modelSet.country = prod.country;
+            modelSet.countryuz = prod.countryuz;
+            modelList.add(modelSet);
           }
         }
         ModelsProvider modelsProvider = Provider.of<ModelsProvider>(context);
@@ -170,66 +171,66 @@ class _FirstPageState extends State<FirstPage> {
                 //     ? Colors.yellow
                 //     : Colors.white,
                 child: Card(
-                  child: Column(
-                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(top: 5, left: 10),
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "${uz_ru == Uz_ru.UZ ? modelList[index].section.nameuz : modelList[index].section.name}: ${modelList[index].producername} (${uz_ru == Uz_ru.RU ? modelList[index].country.toString().toLowerCase() : modelList[index].countryuz.toString().toLowerCase()})", //
-                            style: TextStyle(
-                                color: Colors.indigo,
-                                fontFamily: Ui.textstyle,
-                                fontWeight: FontWeight.w200),
-                          ),
-                        ),
-                        Container(
-                            padding: EdgeInsets.only(left: 10),
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "${modelList[index].name}",
-                              style: TextStyle(
-                                  fontFamily: Ui.textstyle,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w300),
-                            )),
-                        Divider(),
-                        Container(
-                          // alignment: Alignment.center,
-                          child: Image.network(
-                            "${Ui.url}download/model/${modelList[index].imagepath}",
-                            height: 100,
-                          ),
-                        ),
-                        Spacer(),
-                        Divider(),
-                        Container(
-                          padding: EdgeInsets.only(right: 10),
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            Ui.cena[uz_ru]!,
-                            style: TextStyle(
-                                // fontFamily: Ui.textstyle,
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.w200),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(right: 10),
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            '${numberFormat.format(modelList[index].priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: Ui.textstyle,
-                                color: Colors.indigo,
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.w200),
-                          ),
-                        )
-                      ]),
-                )),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(top: 5, left: 10),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "${uz_ru == Uz_ru.UZ ? modelList[index].section.nameuz : modelList[index].section.name}: ${modelList[index].producername} (${uz_ru == Uz_ru.RU ? modelList[index].country.toString().toLowerCase() : modelList[index].countryuz.toString().toLowerCase()})", //
+                        style: TextStyle(
+                            color: Colors.indigo,
+                            fontFamily: Ui.textstyle,
+                            fontWeight: FontWeight.w200),
+                      ),
+                    ),
+                    Container(
+                        padding: EdgeInsets.only(left: 10),
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "${modelList[index].name}",
+                          style: TextStyle(
+                              fontFamily: Ui.textstyle,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w300),
+                        )),
+                    // Divider(color: Colors.white),
+                    SizedBox(
+                      // alignment: Alignment.center,
+                      child: Image.network(
+                        "${Ui.url}download/model/${modelList[index].imagepath}",
+                        height: 100,
+                      ),
+                    ),
+                    Spacer(),
+                    Divider(),
+                    Container(
+                      padding: EdgeInsets.only(right: 10),
+                      alignment: Alignment.bottomRight,
+                      child: Text(
+                        Ui.cena[uz_ru]!,
+                        style: TextStyle(
+                            // fontFamily: Ui.textstyle,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w200),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(right: 10, bottom: 5),
+                      alignment: Alignment.bottomRight,
+                      child: Text(
+                        '${numberFormat.format(modelList[index].priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: Ui.textstyle,
+                            color: Colors.indigo,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w200),
+                      ),
+                    )
+                  ]),
+            )),
           );
         });
   }
@@ -307,7 +308,6 @@ class _FirstPageState extends State<FirstPage> {
                                   alignment: Alignment.bottomRight,
                                   child: Text(
                                     '${numberFormat.format(modelList[index].priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
-
                                     style: TextStyle(
                                         fontSize: 18,
                                         color: Colors.indigo,

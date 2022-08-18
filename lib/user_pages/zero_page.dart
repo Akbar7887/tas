@@ -57,7 +57,7 @@ class _ZeroPageState extends State<ZeroPage> {
                     return snapshot.data as Widget;
                   } else {
                     return Scaffold(
-                        backgroundColor: Colors.yellow,
+                        backgroundColor: Colors.amberAccent[100],
                         body: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
