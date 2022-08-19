@@ -1,20 +1,18 @@
 import 'CustomerOrder.dart';
-import 'ModelSet.dart';
 
 class Customer {
     List<CustomerOrder>? customerOrders;
     String? email;
     int? id;
-    String name;
-    String phone;
-    ModelSet? modelset;
+    String? name;
+    String? phone;
 
-    Customer({ required this.customerOrders,
-        required this.email,
+
+    Customer({ this.customerOrders,
+         this.email,
         this.id,
-        required this.name,
-        required this.phone,
-    this.modelset});
+         this.name,
+         this.phone});
 
     factory Customer.fromJson(Map<String, dynamic> json) {
         return Customer(
@@ -22,8 +20,7 @@ class Customer {
             email: json['email'], 
             id: json['id'], 
             name: json['name'], 
-            phone: json['phone'],
-            modelset: json['modelset'],
+            phone: json['phone']
         );
     }
 
@@ -33,7 +30,6 @@ class Customer {
         data['id'] = this.id;
         data['name'] = this.name;
         data['phone'] = this.phone;
-        data['modelset'] = this.modelset;
         if (this.customerOrders != null) {
             data['customerOrders'] = this.customerOrders?.map((v) => v.toJson()).toList();
         }

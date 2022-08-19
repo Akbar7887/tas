@@ -44,7 +44,7 @@ class ApiProvider {
   Future<Customer> postCustomer(Customer customer, String model_id) async {
 
     Map<String, dynamic> quiryParam = {
-      'model_id': model_id,
+      "model_id": model_id,
     };
     Uri uri = Uri.parse("${Ui.url}customeradd").replace(queryParameters: quiryParam);
 

@@ -15,7 +15,7 @@ class CustomerBloc extends Cubit<ProducerState> {
 
   }
 
-  Future<Customer> post(Customer customer, String model_id){
-    return repository.postCustomer(customer, model_id);
+  Future<Customer> post(Customer customer, String model_id) async {
+    return await repository.postCustomer(customer, model_id);
   }
 }

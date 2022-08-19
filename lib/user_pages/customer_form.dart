@@ -38,14 +38,10 @@ class _CustomerFormState extends State<CustomerForm> {
 
   @override
   Widget build(BuildContext context) {
-    String answerphone =
-        Ui.c6[context.watch<SimpleProvider>().getuzru].toString();
-    String answerfio =
-        Ui.c2[context.watch<SimpleProvider>().getuzru].toString();
-    String answerget =
-        Ui.c7[context.watch<SimpleProvider>().getuzru].toString();
-    String answerunget =
-        Ui.c8[context.watch<SimpleProvider>().getuzru].toString();
+    String answerphone = Ui.c6[context.watch<SimpleProvider>().getuzru]!;
+    String answerfio = Ui.c2[context.watch<SimpleProvider>().getuzru]!;
+    String answerget = Ui.c7[context.watch<SimpleProvider>().getuzru]!;
+    String answerunget = Ui.c8[context.watch<SimpleProvider>().getuzru]!;
 
     // ModelSet modelSet = context.watch<ModelsProvider>().getmodel;
 
@@ -243,8 +239,7 @@ class _CustomerFormState extends State<CustomerForm> {
                     customerOrders: custmersorder,
                     email: _controlleremail.text,
                     name: _controllerfio.text,
-                    phone: _controllerphone.text,
-                    modelset: modelSet);
+                    phone: _controllerphone.text);
 
                 if (_controllerfio.text.isEmpty ||
                     _controllerphone.text.isEmpty) {
@@ -255,7 +250,7 @@ class _CustomerFormState extends State<CustomerForm> {
                     .then((value) {
                   _controllerphone.text = "";
                   _controllerfio.text = "";
-                  _controllerphone.text = "";
+                  _controlleremail.text = "";
 
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text(answerget)));
