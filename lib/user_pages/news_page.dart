@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tas/bloc/newscompany_bloc.dart';
-import 'package:tas/bloc/producer_state.dart';
-import 'package:tas/models/News_Company.dart';
 
+import '../bloc/newscompany_bloc.dart';
+import '../bloc/producer_state.dart';
+import '../models/News_Company.dart';
 import '../models/ui.dart';
 
 class NewsPage extends StatelessWidget {

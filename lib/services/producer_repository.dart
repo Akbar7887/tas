@@ -1,9 +1,10 @@
-import 'package:tas/models/Customer.dart';
-import 'package:tas/models/ModelSet.dart';
-import 'package:tas/models/News_Company.dart';
-import 'package:tas/models/Producer.dart';
-import 'package:tas/models/Section.dart';
-import 'package:tas/services/api_provider.dart';
+
+import '../models/Customer.dart';
+import '../models/ModelSet.dart';
+import '../models/News_Company.dart';
+import '../models/Producer.dart';
+import '../models/Section.dart';
+import 'api_provider.dart';
 
 class Repository {
   final ApiProvider _apiProvider = ApiProvider();

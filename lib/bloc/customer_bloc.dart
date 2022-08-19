@@ -1,7 +1,7 @@
+import 'package:TAS/bloc/producer_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tas/bloc/producer_state.dart';
-import 'package:tas/models/Customer.dart';
 
+import '../models/Customer.dart';
 import '../services/producer_repository.dart';
 
 class CustomerBloc extends Cubit<ProducerState> {

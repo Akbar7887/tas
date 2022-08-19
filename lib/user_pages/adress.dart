@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tas/provider/simle_provider.dart';
 
 import '../models/ui.dart';
+import '../provider/simle_provider.dart';
 
 class Adress extends StatefulWidget {
   const Adress({Key? key}) : super(key: key);

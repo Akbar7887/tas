@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tas/models/Section.dart';
+
+import '../models/Section.dart';
+
 
 class SectionProvider extends ChangeNotifier{
 

@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:tas/bloc/customer_bloc.dart';
-import 'package:tas/models/Customer.dart';
-import 'package:tas/models/CustomerOrder.dart';
-import 'package:tas/models/ModelSet.dart';
 
+import '../bloc/customer_bloc.dart';
+import '../models/Customer.dart';
+import '../models/CustomerOrder.dart';
+import '../models/ModelSet.dart';
 import '../models/ui.dart';
 import '../provider/simle_provider.dart';
 

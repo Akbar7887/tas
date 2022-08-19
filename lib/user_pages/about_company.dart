@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tas/provider/simle_provider.dart';
 
 import '../models/ui.dart';
+import '../provider/simle_provider.dart';
 
 class AboutCompany extends StatelessWidget {
   const AboutCompany({Key? key}) : super(key: key);

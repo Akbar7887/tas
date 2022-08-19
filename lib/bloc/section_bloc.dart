@@ -1,8 +1,8 @@
+import 'package:TAS/bloc/producer_event.dart';
+import 'package:TAS/bloc/producer_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tas/bloc/producer_event.dart';
-import 'package:tas/bloc/producer_state.dart';
-import 'package:tas/models/Section.dart';
 
+import '../models/Section.dart';
 import '../services/producer_repository.dart';
 
 class SectionBloc extends Bloc<ProducerEvent, ProducerState> {

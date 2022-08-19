@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:tas/models/Customer.dart';
 
-import '../models/ui.dart';
+import '../models/Customer.dart';
 
 class CustromerProvider with ChangeNotifier{
 

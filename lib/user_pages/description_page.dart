@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:tas/models/ModelSet.dart';
-import 'package:tas/provider/models_provider.dart';
-import 'package:tas/provider/simle_provider.dart';
 
+import '../models/ModelSet.dart';
 import '../models/ui.dart';
+import '../provider/models_provider.dart';
+import '../provider/simle_provider.dart';
 
 class DescriptionPage extends StatelessWidget {
   const DescriptionPage({Key? key}) : super(key: key);

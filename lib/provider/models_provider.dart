@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tas/models/ModelSet.dart';
+
+import '../models/ModelSet.dart';
 
 class ModelsProvider with ChangeNotifier {
   ModelSet? modelSet = null;

@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tas/bloc/customer_bloc.dart';
-import 'package:tas/bloc/newscompany_bloc.dart';
-import 'package:tas/bloc/producer_bloc.dart';
-import 'package:tas/bloc/producer_event.dart';
-import 'package:tas/bloc/section_bloc.dart';
 
+import '../bloc/customer_bloc.dart';
+import '../bloc/newscompany_bloc.dart';
 import '../bloc/producer_bloc.dart';
 import '../bloc/producer_event.dart';
+import '../bloc/section_bloc.dart';
 import '../home.dart';
 import '../services/producer_repository.dart';
 

@@ -1,8 +1,7 @@
-import 'package:tas/models/ModelSet.dart';
-import 'package:tas/models/Producer.dart';
-
 import '../models/Customer.dart';
+import '../models/ModelSet.dart';
 import '../models/News_Company.dart';
+import '../models/Producer.dart';
 import '../models/Section.dart';
 
 abstract class ProducerState {}
@@ -25,24 +24,20 @@ class ModelLoadedState extends ProducerState {
   ModelLoadedState({required this.loadedModel});
 }
 
-class CustomerLoadedState extends ProducerState{
-
+class CustomerLoadedState extends ProducerState {
   Customer loadedCustomer;
 
   CustomerLoadedState({required this.loadedCustomer});
 }
 
-class SectionLoadedState extends ProducerState{
-
+class SectionLoadedState extends ProducerState {
   List<Section> loadedSection;
 
   SectionLoadedState({required this.loadedSection});
 }
 
-class NewsCompanyLoadedState extends ProducerState{
-
+class NewsCompanyLoadedState extends ProducerState {
   List<NewsCompany> loadednews;
 
   NewsCompanyLoadedState({required this.loadednews});
-
 }

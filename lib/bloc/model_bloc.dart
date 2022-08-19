@@ -1,8 +1,9 @@
+import 'package:TAS/bloc/producer_event.dart';
+import 'package:TAS/bloc/producer_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tas/bloc/producer_event.dart';
-import 'package:tas/bloc/producer_state.dart';
-import 'package:tas/models/ModelSet.dart';
-import 'package:tas/services/producer_repository.dart';
+
+import '../models/ModelSet.dart';
+import '../services/producer_repository.dart';
 
 class ModelBloc extends Bloc<ProducerEvent, ProducerState> {
   final Repository repository;

@@ -1,20 +1,20 @@
+import 'package:TAS/provider/models_provider.dart';
+import 'package:TAS/provider/section_provider.dart';
+import 'package:TAS/provider/simle_provider.dart';
+import 'package:TAS/user_pages/about_company.dart';
+import 'package:TAS/user_pages/adress.dart';
+import 'package:TAS/user_pages/customer_form.dart';
+import 'package:TAS/user_pages/description_page.dart';
+import 'package:TAS/user_pages/first_page.dart';
+import 'package:TAS/user_pages/news_page.dart';
+import 'package:TAS/user_pages/section_page.dart';
+import 'package:TAS/widgets/drawer_home.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:provider/provider.dart';
-import 'package:tas/provider/models_provider.dart';
-import 'package:tas/provider/section_provider.dart';
-import 'package:tas/provider/simle_provider.dart';
-import 'package:tas/user_pages/about_company.dart';
-import 'package:tas/user_pages/adress.dart';
-import 'package:tas/user_pages/customer_form.dart';
-import 'package:tas/user_pages/description_page.dart';
-import 'package:tas/user_pages/first_page.dart';
-import 'package:tas/user_pages/news_page.dart';
-import 'package:tas/user_pages/section_page.dart';
-import 'package:tas/widgets/drawer_home.dart';
 
 import 'models/ui.dart';
 

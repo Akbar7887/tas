@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:tas/models/ModelSet.dart';
-import 'package:tas/models/News_Company.dart';
-import 'package:tas/models/Producer.dart';
-import 'package:tas/models/Section.dart';
-import 'package:tas/models/ui.dart';
 
 import '../models/Customer.dart';
+import '../models/ModelSet.dart';
+import '../models/News_Company.dart';
+import '../models/Producer.dart';
+import '../models/Section.dart';
+import '../models/ui.dart';
 
 class ApiProvider {
   Map<String, String> header = {

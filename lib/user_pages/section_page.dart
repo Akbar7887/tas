@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:tas/bloc/producer_state.dart';
-import 'package:tas/bloc/section_bloc.dart';
-import 'package:tas/models/ModelSet.dart';
-import 'package:tas/models/Section.dart';
-import 'package:tas/provider/models_provider.dart';
-import 'package:tas/provider/section_provider.dart';
-import 'package:tas/provider/simle_provider.dart';
 
+import '../bloc/producer_state.dart';
+import '../bloc/section_bloc.dart';
+import '../models/ModelSet.dart';
+import '../models/Section.dart';
 import '../models/ui.dart';
+import '../provider/models_provider.dart';
+import '../provider/section_provider.dart';
+import '../provider/simle_provider.dart';
 
 List<Section> listSection = [];
 
