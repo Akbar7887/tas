@@ -6,8 +6,9 @@ enum Uz_ru { UZ, RU }
 class Ui {
   static final String name = "Компания \"TAS\"";
   static final String fullname = "ЧП \"TEXNIKA ADVANCE SERVICE\"";
-   static final String url = 'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
-   // static final String url = 'http://localhost:8083/api/';
+  static final String url =
+      'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
+  // static final String url = 'http://localhost:8083/api/';
   static final String phone = "+998 78 147 00 80";
   static final String textstyle = "OpenSans";
   static final String telegram = 't.me/tasuzcom';
