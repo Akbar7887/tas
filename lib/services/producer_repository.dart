@@ -1,3 +1,4 @@
+import 'package:TAS/models/CustomerOrder.dart';
 
 import '../models/Customer.dart';
 import '../models/ModelSet.dart';
@@ -13,10 +14,14 @@ class Repository {
 
   Future<List<ModelSet>> getAllModels() => _apiProvider.getModelAll();
 
-  Future<Customer> postCustomer(Customer customer, String model_id) =>
-      _apiProvider.postCustomer(customer, model_id);
+  Future<Customer> postCustomer(Customer customer) =>
+      _apiProvider.postCustomer(customer);
 
   Future<List<Section>> getSections() => _apiProvider.getSection();
 
   Future<List<NewsCompany>> getNews() => _apiProvider.getNews();
+
+  Future<CustomerOrder> postCustomerOrder(
+          CustomerOrder customerOrder, String customer_id) =>
+      _apiProvider.postCustomerOrder(customerOrder, customer_id);
 }

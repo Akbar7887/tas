@@ -1,3 +1,4 @@
+import 'package:TAS/services/producer_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,12 +29,14 @@ class _CustomerFormState extends State<CustomerForm> {
   final _formkeyemail = GlobalKey<FormState>();
   late ModelSet modelSet;
   late CustomerBloc customerBloc;
+  late final Repository repository;
 
   @override
   void initState() {
     super.initState();
     modelSet = widget.modelSet!;
     customerBloc = BlocProvider.of<CustomerBloc>(context);
+    repository = Repository();
   } // bool validate = false;
 
   @override
@@ -206,15 +209,22 @@ class _CustomerFormState extends State<CustomerForm> {
           ),
         ),
         SizedBox(
-          height: 20,
+          height: 10,
         ),
         Container(
             margin: EdgeInsets.only(left: 30, right: 30),
-            height: 80,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.indigo),
-                borderRadius: BorderRadius.circular(10)),
-            child: TextButton(
+            height: 60,
+            // decoration: BoxDecoration(
+            //     border: Border.all(color: Colors.indigo,width: 0.5),
+            //     borderRadius: BorderRadius.circular(10)),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.amberAccent[100]),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: BorderSide(color: Colors.indigo))),
+              ),
               onPressed: () {
                 // _formkeyfio.currentState!.validate();
                 // _formkeyphone.currentState!.validate();
@@ -231,12 +241,10 @@ class _CustomerFormState extends State<CustomerForm> {
                   //         Ui.c4[context.watch<SimpleProvider>().getuzru]!)));
                 }
 
-                List<CustomerOrder> custmersorder = [
-                  CustomerOrder(modelset: modelSet, currentdate: "")
-                ];
+                CustomerOrder customerOrder =
+                    CustomerOrder(modelset: modelSet, currentdate: "");
 
                 Customer customer = Customer(
-                    customerOrders: custmersorder,
                     email: _controlleremail.text,
                     name: _controllerfio.text,
                     phone: _controllerphone.text);
@@ -245,16 +253,24 @@ class _CustomerFormState extends State<CustomerForm> {
                     _controllerphone.text.isEmpty) {
                   return;
                 }
-                customerBloc
-                    .post(customer, modelSet.id.toString())
-                    .then((value) {
-                  _controllerphone.text = "";
-                  _controllerfio.text = "";
-                  _controlleremail.text = "";
+                customerBloc.post(customer).then((value) {
+                  repository
+                      .postCustomerOrder(customerOrder, value.id.toString())
+                      .then((value) {
+                    _controllerphone.text = "";
+                    _controllerfio.text = "";
+                    _controlleremail.text = "";
 
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text(answerget)));
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text(answerget)));
+                  }).catchError((onError) {
+                    print("Custom Order error");
+
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text(answerunget)));
+                  });
                 }).catchError((onError) {
+                  print("Custom error");
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text(answerunget)));
                 });
