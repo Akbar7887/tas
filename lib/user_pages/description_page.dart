@@ -27,8 +27,6 @@ class DescriptionPage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       context.read<SimpleProvider>().changepage(3);
-                      // context.read<SimpleProvider>().changetitle(
-                      //     Ui.d3[context.watch<SimpleProvider>().getuzru]!);
                     },
                     style: ButtonStyle(
                         backgroundColor:

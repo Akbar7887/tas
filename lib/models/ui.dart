@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 enum Uz_ru { UZ, RU }
 
 class Ui {
-  static final String name = "Компания \"TAS\"";
+  static final String name = "TAS";
   static final String fullname = "ЧП \"TEXNIKA ADVANCE SERVICE\"";
   static final String url =
      'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
@@ -27,11 +27,18 @@ class Ui {
 
   //===============Adress =========================
 
+  static final Map<dynamic, String> title = {
+    Uz_ru.UZ:
+    "Uzbekiston учун maxsus texnikalar",
+    Uz_ru.RU:
+    "Спецтехника для Узбекистана"
+  };
+
   static final Map<dynamic, String> adress = {
     Uz_ru.UZ:
         "Manzil: Toshkent shaxar, Yunusobod tumani, A.Temur 95 uy («UzOman Tower»), 5 qavat, 505 offis",
     Uz_ru.RU:
-        "Адес: Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower», 5 этаж 505 оффисе"
+        "Адес: Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower», 5 этаж 505 оффис"
   };
   static final Map<dynamic, String> adressfix = {
     Uz_ru.UZ: "Манзилимиз",
@@ -43,6 +50,20 @@ class Ui {
   static final Map<dynamic, String> tab = {
     Uz_ru.UZ: "Kompanya haqida",
     Uz_ru.RU: "О Компании"
+  };
+  static final Map<dynamic, String>  choose = {
+    Uz_ru.UZ: "Tanlovingiz",
+    Uz_ru.RU: "Ваше выбор!"
+  };
+
+  static final Map<dynamic, String>  applyphone = {
+    Uz_ru.UZ: "Qo'ng'iroq buyurtma berish",
+    Uz_ru.RU: "Заказать звонок"
+  };
+
+  static final Map<dynamic, String> news = {
+    Uz_ru.UZ: "Yangiliklar",
+    Uz_ru.RU: "Новости"
   };
 
   static final Map<dynamic, String> sertifikat = {

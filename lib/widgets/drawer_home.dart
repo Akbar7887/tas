@@ -32,9 +32,20 @@ class DrawerHome extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
+
                         Image.asset(
                           "assets/images/logo.png",
                           width: 100,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "${Ui.title[context.watch<SimpleProvider>().getuzru]}",
+                            style: TextStyle(
+                                fontFamily: Ui.textstyle,
+                                fontWeight: FontWeight.w300,
+                                fontSize: 15),
+                          ),
                         ),
                         Container(
                           alignment: Alignment.center,
@@ -117,7 +128,7 @@ class DrawerHome extends StatelessWidget {
                 context.read<SimpleProvider>().changepage(4);
                 Navigator.pop(context);
               },
-              child: Text("О компании",
+              child: Text(Ui.tab[context.watch<SimpleProvider>().getuzru]!,
                   style: TextStyle(
                       fontFamily: Ui.textstyle,
                       fontWeight: FontWeight.w500,
@@ -129,13 +140,12 @@ class DrawerHome extends StatelessWidget {
                 onTap: () {
                   context.read<SectionProvider>().changeSection(null);
                   context.read<SimpleProvider>().changepage(1);
-                  context.read<SimpleProvider>().changetitle(Ui.name);
                   // setState(() {
                   //   textnext = Ui.h2[uz_ru]!;
                   // });
                   Navigator.pop(context);
                 },
-                child: Text("Каталог",
+                child: Text(Ui.catalogs[context.watch<SimpleProvider>().getuzru]!,
                     style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
               ),
             ),
@@ -146,7 +156,7 @@ class DrawerHome extends StatelessWidget {
                   context.read<SimpleProvider>().changepage(7);
                   Navigator.pop(context);
                 },
-                child: Text("Новости",
+                child: Text(Ui.news[context.watch<SimpleProvider>().getuzru]!,
                     style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
               ),
             ),
@@ -157,7 +167,7 @@ class DrawerHome extends StatelessWidget {
                   context.read<SimpleProvider>().changepage(5);
                   Navigator.pop(context);
                 },
-                child: Text("Адреса",
+                child: Text(Ui.adressfix[context.watch<SimpleProvider>().getuzru]!,
                     style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
               ),
             )
