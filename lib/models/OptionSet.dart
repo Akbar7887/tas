@@ -1,11 +1,11 @@
 import 'OptionConstant.dart';
 
 class OptionSet {
-    int id;
+    int? id;
     OptionConstant? optionConstant;
-    String optionname;
+    String? optionname;
 
-    OptionSet({required this.id, required this.optionConstant, required this.optionname});
+    OptionSet({ this.id,  this.optionConstant,  this.optionname});
 
     factory OptionSet.fromJson(Map<String, dynamic> json) {
         return OptionSet(

@@ -58,7 +58,7 @@ class DescriptionPage extends StatelessWidget {
           child: Text(
             "${modelSet.section!.name}-${modelSet.producername}:",
             style: TextStyle(
-                fontWeight: FontWeight.w200,
+                fontWeight: FontWeight.w400,
                 fontSize: 20,
                 fontFamily: Ui.textstyle),
           ),
@@ -83,15 +83,24 @@ class DescriptionPage extends StatelessWidget {
             )),
         Container(
           padding: EdgeInsets.only(left: 10),
-          child: Text(
-            '${Ui.cena[context.watch<SimpleProvider>().getuzru]}: ${numberFormat.format(modelSet.priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
+          child: Row(children: [
+            Text(
+              '${Ui.cena[context.watch<SimpleProvider>().getuzru]} ',
+              style: TextStyle(
+                  color: Colors.indigo,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w200,
+                  fontFamily: Ui.textstyle),
+            ),
+            Text(
+            '${numberFormat.format(modelSet.priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
             style: TextStyle(
                 fontSize: 18,
                 color: Colors.indigo,
                 fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w400,
                 fontFamily: Ui.textstyle),
-          ),
+          ),],)
         ),
         Container(
           width: 150,

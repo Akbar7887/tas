@@ -134,7 +134,7 @@ class DrawerHome extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: 20)),
             )),
-            Divider(),
+            Divider(color: Colors.amberAccent),
             ListTile(
               title: InkWell(
                 onTap: () {
@@ -149,7 +149,7 @@ class DrawerHome extends StatelessWidget {
                     style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
               ),
             ),
-            Divider(),
+            Divider(color: Colors.amberAccent,),
             ListTile(
               title: InkWell(
                 onTap: () {
@@ -160,7 +160,7 @@ class DrawerHome extends StatelessWidget {
                     style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
               ),
             ),
-            Divider(),
+            Divider(color: Colors.amberAccent),
             ListTile(
               title: InkWell(
                 onTap: () {

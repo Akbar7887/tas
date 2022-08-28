@@ -219,10 +219,10 @@ class AboutCompany extends StatelessWidget {
   Widget sertificete() {
     return ListView(
       children: [
-        Image.asset("assets/images/ser1.jpeg"),
-        Image.asset("assets/images/ser2.jpeg"),
-        Image.asset("assets/images/ser3.jpeg"),
-        Image.asset("assets/images/ser4.jpeg"),
+        Image.asset("assets/images/ser1.jpg"),
+        Image.asset("assets/images/ser2.jpg"),
+        Image.asset("assets/images/ser3.jpg"),
+        Image.asset("assets/images/ser4.jpg"),
       ],
     );
   }

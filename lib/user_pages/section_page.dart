@@ -125,7 +125,7 @@ class SectionPage extends StatelessWidget {
                                       .toString()
                                       .toUpperCase(),
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     fontFamily: Ui.textstyle,
                                   )),
                             )),

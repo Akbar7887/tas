@@ -32,6 +32,7 @@ class _FirstPageState extends State<FirstPage> {
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     uz_ru = Provider.of<SimpleProvider>(context).getuzru;
@@ -48,10 +49,10 @@ class _FirstPageState extends State<FirstPage> {
               child: Text(
                 Ui.f1[context.watch<SimpleProvider>().getuzru]!,
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 15,
                     fontFamily: Ui.textstyle,
                     color: Colors.indigo,
-                    fontWeight: FontWeight.w200),
+                    fontWeight: FontWeight.w300),
               ),
             ),
 
@@ -189,7 +190,7 @@ class _FirstPageState extends State<FirstPage> {
                             style: TextStyle(
                                 color: Colors.indigo,
                                 fontFamily: Ui.textstyle,
-                                fontWeight: FontWeight.w200),
+                                fontWeight: FontWeight.w400),
                           ),
                         ),
                         Container(
@@ -229,7 +230,7 @@ class _FirstPageState extends State<FirstPage> {
                           child: Text(
                             '${numberFormat.format(modelList[index].priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
                             style: TextStyle(
-                                fontSize: 18,
+                                // fontSize: 18,
                                 fontFamily: Ui.textstyle,
                                 color: Colors.indigo,
                                 fontStyle: FontStyle.italic,
@@ -286,7 +287,7 @@ class _FirstPageState extends State<FirstPage> {
                                     "${uz_ru == Uz_ru.UZ ? modelList[index].section.nameuz : modelList[index].section.name}: ${modelList[index].producername} (${uz_ru == Uz_ru.RU ? modelList[index].country.toString().toLowerCase() : modelList[index].countryuz.toString().toLowerCase()})", //
                                     style: TextStyle(
                                         fontFamily: Ui.textstyle,
-                                        fontWeight: FontWeight.w200,
+                                        fontWeight: FontWeight.w400,
                                         color: Colors.indigo),
                                   ),
                                 ),
@@ -315,7 +316,7 @@ class _FirstPageState extends State<FirstPage> {
                                   child: Text(
                                     '${numberFormat.format(modelList[index].priceuzs)} ${Ui.excchange[context.watch<SimpleProvider>().getuzru]}',
                                     style: TextStyle(
-                                        fontSize: 18,
+                                        // fontSize: 18,
                                         color: Colors.indigo,
                                         fontStyle: FontStyle.italic,
                                         fontWeight: FontWeight.w200,

@@ -5,7 +5,7 @@ enum Uz_ru { UZ, RU }
 
 class Ui {
   static final String name = "TAS";
-  static final String fullname = "ЧП \"TEXNIKA ADVANCE SERVICE\"";
+  static final String fullname = "ЧП \"TEXNIKA ADVANS SERVIS\"";
   static final String url =
      'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
   static final String urllogin =
@@ -13,7 +13,7 @@ class Ui {
   // static final String url = 'http://localhost:8083/api/';
   // static final String urllogin = 'http://localhost:8083';
   static final String phone = "+998 78 147 00 80";
-  static final String textstyle = "OpenSans";
+  static final String textstyle = 'Noto';
   static final String telegram = 't.me/tasuzcom';
   static final String inhstagram =
       'www.instagram.com/p/CfLO258orDI/?igshid=MDJmNzVkMjY=';
@@ -36,13 +36,13 @@ class Ui {
 
   static final Map<dynamic, String> adress = {
     Uz_ru.UZ:
-        "Manzil: Toshkent shaxar, Yunusobod tumani, A.Temur 95 uy («UzOman Tower»), 5 qavat, 505 offis",
+        "Manzil: Toshkent shaxar, Yunusobod tumani, A.Temur 95 uy («UzOman Tower»), 5 qavat, 504 offis",
     Uz_ru.RU:
-        "Адес: Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower», 5 этаж 505 оффис"
+        "Адрес: Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower», 5 этаж, 504 оффис"
   };
   static final Map<dynamic, String> adressfix = {
     Uz_ru.UZ: "Манзилимиз",
-    Uz_ru.RU: "Адеса"
+    Uz_ru.RU: "Адреса"
   };
 
   //=========about_company=============================
@@ -73,7 +73,7 @@ class Ui {
 
   static final Map<dynamic, String> description = {
     Uz_ru.UZ:
-        "\"Texnika Advans Servis\" XXR dan maxsus texnika, uskunalar va ehtiyot qismlarini yetkazib berishni tashkillashtirish bo‘yicha eng ishonchli kompaniyalardan biri bo‘lib hisoblanadi.",
+        "\"Texnika Advans Servis\" XXR dan maxsus texnika, uskunalar va ehtiyot qismlarni yetkazib berishni tashkillashtirish bo‘yicha eng ishonchli kompaniyalardan biri bo‘lib hisoblanadi.",
     Uz_ru.RU:
         "Texnika Advans Servis является одной из надежных компаний по организации поставок спецтехники, оборудования и запчастей из КНР."
   };
@@ -85,7 +85,7 @@ class Ui {
 
   static final Map<dynamic, String> descriptionservice = {
     Uz_ru.UZ:
-        "Biz maxsus texnikani (XCMG, SHANTUI, SHACMAN, JONYANG, WEICHAI POWER, SHANGHAI DEISEL va boshq.) ishlab chiqaruvchi zavodlar tomonidan, maxsus texnikaga kafolatlangan va kafolatdan keyingi ta’mirlash xizmatlarini ko‘rsatish uchun vakolat berilgan kompaniyamiz. TAS servis markazi — bu barcha turdagi ta’mirlash ishlarini bajarish va sifatli xizmat ko‘rsatish uchun zamonaviy uskunalarga ega yuqori darajali texnik baza",
+        "Biz maxsus texnikani (XCMG, SHANTUI, SHACMAN, JONYANG, WEICHAI POWER, SHANGHAI DEISEL va boshq.) ishlab chiqaruvchi zavodlar tomonidan, maxsus texnikaga kafolatlangan va kafolatdan keyingi ta’mirlash xizmatlarini ko‘rsatish uchun vakolat berilgan kompaniyamiz. TAS servis markazi — bu barcha turdagi ta’mirlash ishlarini bajarish va sifatli xizmat ko‘rsatish uchun zamonaviy uskunalarga ega yuqori darajali texnik baza ega",
     Uz_ru.RU:
         "Мы являемся компанией, авторизованной заводами производителями спецтехники (XCMG, SHANTUI, SHACMAN, JONYANG, WEICHAI POWER, SHANGHAI DEISEL и др.) на оказание услуг гарантийного и послегарантийного ремонта спецтехники."
   };
@@ -181,13 +181,13 @@ class Ui {
 
   static final Map<dynamic, String> c7 = {
     Uz_ru.UZ:
-        "Sizning murojatingiz qabul qilindi! Siz bilan yaqin orada boglanishadi",
+        "Sizning murojatingiz qabul qilindi! Siz bilan yaqin orada menegerimiz bog'lanadi",
     Uz_ru.RU: "Ваше заявка принята Менеджеры свяжутся с Вами !"
   };
 
   static final Map<dynamic, String> c8 = {
     Uz_ru.UZ:
-        "YUQ setda muammo borligi sababli, Sizning murojatingiz qabul qilinmadi!",
+        "YUQ! setda muammo borligi sababli, Sizning murojatingiz qabul qilinmadi!",
     Uz_ru.RU: "Просим повторить заказ из за не поладки в сети!"
   };
 

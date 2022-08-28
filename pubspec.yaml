@@ -84,10 +84,10 @@ flutter:
     - assets/images/shantui.png
     - assets/images/weichan.png
     - assets/images/shacman.png
-    - assets/images/ser1.jpeg
-    - assets/images/ser2.jpeg
-    - assets/images/ser3.jpeg
-    - assets/images/ser4.jpeg
+    - assets/images/ser1.jpg
+    - assets/images/ser2.jpg
+    - assets/images/ser3.jpg
+    - assets/images/ser4.jpg
     - assets/images/Instagram_icon.png
   #   - images/a_dot_ham.jpeg
 
@@ -106,6 +106,9 @@ flutter:
     - family: Oswald
       fonts:
         - asset: assets/fonts/Oswald-ExtraLight.ttf
+    - family: Noto
+      fonts:
+        - asset: assets/fonts/notosans/ttf
 
   #   - family: Schyler
   #     fonts:
