@@ -320,7 +320,7 @@ class _FirstPageState extends State<FirstPage> {
                                         color: Colors.indigo,
                                         fontStyle: FontStyle.italic,
                                         fontWeight: FontWeight.w200,
-                                        fontFamily: 'Oswald'),
+                                        fontFamily: Ui.textstyle),
                                   ),
                                 )
                               ],
