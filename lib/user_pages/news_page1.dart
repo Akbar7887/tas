@@ -8,6 +8,7 @@ import '../models/News_Company.dart';
 import '../models/ui.dart';
 
 var formatter = new DateFormat('yyyy-MM-dd');
+Uz_ru? uz_ru;
 
 class NewsPage1 extends StatelessWidget {
   final NewsCompany newsCompany;
@@ -16,6 +17,8 @@ class NewsPage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    uz_ru = Provider.of<SimpleProvider>(context).getuzru;
+
     return ListView(
       children: [
         Container(
@@ -31,14 +34,13 @@ class NewsPage1 extends StatelessWidget {
           padding: EdgeInsets.only(left: 20, right: 20),
           alignment: Alignment.topLeft,
           child: Text(
-            newsCompany.title,
+            uz_ru == Uz_ru.RU ? newsCompany.title! : newsCompany.titleuz!,
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontFamily: Ui.textstyle,
                 fontSize: 20),
           ),
         ),
-
         Container(
           padding: EdgeInsets.only(left: 20, right: 20),
           alignment: Alignment.bottomLeft,
@@ -53,7 +55,10 @@ class NewsPage1 extends StatelessWidget {
         Padding(
             padding: EdgeInsets.all(20),
             child: Text(
-              "   " + newsCompany.description,
+              "   " +
+                  (uz_ru! == Uz_ru.RU
+                      ? newsCompany.description!
+                      : newsCompany.descriptionuz!),
               textAlign: TextAlign.justify,
               style: TextStyle(
                   fontWeight: FontWeight.w300,
