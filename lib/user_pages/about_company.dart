@@ -23,7 +23,8 @@ class AboutCompany extends StatelessWidget {
                       text: Ui.tab[context.watch<SimpleProvider>().getuzru],
                     ),
                     Tab(
-                      text: Ui.sertifikat[context.watch<SimpleProvider>().getuzru],
+                      text: Ui
+                          .sertifikat[context.watch<SimpleProvider>().getuzru],
                     ),
                   ]),
             ),
@@ -41,24 +42,20 @@ class AboutCompany extends StatelessWidget {
           height: 20,
         ),
         Container(
-            padding: EdgeInsets.only(left: 10, right: 10),
-            child: Wrap(
-              children: [
-                RichText(
-                  text: TextSpan(
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontStyle: FontStyle.italic),
-                      text: Ui.description[context.watch<SimpleProvider>().getuzru]),
-                )
-              ],
-            )),
+          padding: EdgeInsets.only(left: 10, right: 10),
+          child: Text(
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontStyle: FontStyle.italic),
+             "    " + Ui.description[context.watch<SimpleProvider>().getuzru]!),
+        ),
         Divider(),
         Container(
           padding: EdgeInsets.only(left: 10, right: 10),
           child: Text(
-           Ui.tema1[context.watch<SimpleProvider>().getuzru]!,
+            Ui.tema1[context.watch<SimpleProvider>().getuzru]!,
             style: TextStyle(
                 fontFamily: Ui.textstyle,
                 color: Colors.black,
@@ -85,7 +82,9 @@ class AboutCompany extends StatelessWidget {
                   width: 80,
                 ),
               ),
-              SizedBox(width: 5,),
+              SizedBox(
+                width: 5,
+              ),
               Container(
                 height: 40,
 
@@ -99,7 +98,9 @@ class AboutCompany extends StatelessWidget {
                   width: 80,
                 ),
               ),
-              SizedBox(width: 5,),
+              SizedBox(
+                width: 5,
+              ),
               Container(
                 height: 40,
                 decoration: BoxDecoration(

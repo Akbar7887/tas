@@ -73,9 +73,9 @@ class Ui {
 
   static final Map<dynamic, String> description = {
     Uz_ru.UZ:
-        "\"Texnika Advans Servis\" XXR dan maxsus texnika, uskunalar va ehtiyot qismlarni yetkazib berishni tashkillashtirish bo‘yicha eng ishonchli kompaniyalardan biri bo‘lib hisoblanadi.",
-    Uz_ru.RU:
-        "Texnika Advans Servis является одной из надежных компаний по организации поставок спецтехники, оборудования и запчастей из КНР."
+        "TEXNIKA ADVANS SERVIS Kompaniyasi 2009-yilda tashkil etilgan va XXR dan maxsus texnikalar, uskunalar hamda ehtiyot qismlar yetkazib berish bo‘yicha eng ishonchli kompaniyalardan biri hisoblanadi.\nKompaniyamiz tomonidan yetkazib beriladigan maxsus texnika, uskunalar va ehtiyot qismlari eksport variantida ishlab chiqarilgan bo'lib, yuqori sifat standartlariga to'la javob beradi.\n● 20 000 dan ziyod texnika va jihozlarni yetkazib berilishi.\n● 12 yildan buyon bozorda.\n● 12 oy (1 yil yoki 2000 motosoat kafolat).\nBugungi kunda TEXNIKA ADVANS SERVIS kompaniyasi jahon standartlari darajasida qurilish, yo‘l, kon-qazish maxsus texnikalari shuningdek, beton-asfalt zavodlarining barcha turlarini ishlab chiqaruvchi XCMG, SHACMAN, SHANTUI kabi jahon brendlarini O‘zbekiston bozorida rasman taqdim etadi."
+    ,Uz_ru.RU:
+        "Компания \"TEXNIKA ADVANS SERVIS\" была основана в 2009 году и является одной из надежных компаний по осуществлению поставок спецтехники, оборудования и запчастей из KHP\. \n Спецтехника, оборудование и запчасти, поставляемые нашей компанией, выполнены в экспортном варианте и соответствуют высоким стандартам качества. \n●  Более 20 000 поставок техники и оборудования. \n●  12 лет на рынке.\n● 12 месяцев  (гарантия 1 год или 2000 моточасов). \n На сегодняшний день компания TEXNIKA ADVANS SERVIS официально представляет на рынке Узбекистана такие мировые бренды как XCMG, SHACMAN, SHANTUI, которые производят весь спектр строительной, дорожной, карьерной спецтехники и заводов по производству бетона и асфальта на уровне мировых стандартов."
   };
 
   static final Map<dynamic, String> tema1 = {
@@ -85,13 +85,13 @@ class Ui {
 
   static final Map<dynamic, String> descriptionservice = {
     Uz_ru.UZ:
-        "Biz maxsus texnikani (XCMG, SHANTUI, SHACMAN, JONYANG, WEICHAI POWER, SHANGHAI DEISEL va boshq.) ishlab chiqaruvchi zavodlar tomonidan, maxsus texnikaga kafolatlangan va kafolatdan keyingi ta’mirlash xizmatlarini ko‘rsatish uchun vakolat berilgan kompaniyamiz. TAS servis markazi — bu barcha turdagi ta’mirlash ishlarini bajarish va sifatli xizmat ko‘rsatish uchun zamonaviy uskunalarga ega yuqori darajali texnik baza ega",
+        "● Dvigatellar turli tizimlarini samarali diagnostika qilish uchun diagnostika uskunalari hamda rasmiy dasturiy ta'minot.\n● Xizmat ko'rsatish markazi bazasida texnik mutaxassislarning doimiy bor bo'lishi va uskunani ekspluatatsiya qilsh jarayonida yuzaga keladigan texnik muammolarni bartaraf etish bo'yicha birgalikda ish olib borish.",
     Uz_ru.RU:
-        "Мы являемся компанией, авторизованной заводами производителями спецтехники (XCMG, SHANTUI, SHACMAN, JONYANG, WEICHAI POWER, SHANGHAI DEISEL и др.) на оказание услуг гарантийного и послегарантийного ремонта спецтехники."
+        "●  Диагностическое оборудование и официальное программное обеспечение для эффективной диагностики различных систем двигателей.\n●  Постоянное присутствие технических специалистов на базе сервисного центра  и совместная работа по устранению возникающих технических проблем во время эксплуатации техники."
   };
   static final Map<dynamic, String> tema2 = {
-    Uz_ru.UZ: "Servis xizmatlarini ko‘rsatish uchun avtorizatsiyaga egamiz.",
-    Uz_ru.RU: "Имеем авторизацию на оказание сервисных услуг."
+    Uz_ru.UZ: "Avtorizatsiyalashgan xizmat ko'rsatish markazining afzalliklari:",
+    Uz_ru.RU: "Преимущества авторизованного сервисного центра:"
   };
   static final Map<dynamic, String> descriptionf = {
     Uz_ru.UZ:
