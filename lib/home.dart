@@ -1,4 +1,5 @@
 import 'package:TAS/provider/models_provider.dart';
+import 'package:TAS/provider/news_provider.dart';
 import 'package:TAS/provider/section_provider.dart';
 import 'package:TAS/provider/simle_provider.dart';
 import 'package:TAS/user_pages/about_company.dart';
@@ -7,6 +8,7 @@ import 'package:TAS/user_pages/customer_form.dart';
 import 'package:TAS/user_pages/description_page.dart';
 import 'package:TAS/user_pages/first_page.dart';
 import 'package:TAS/user_pages/news_page.dart';
+import 'package:TAS/user_pages/news_page1.dart';
 import 'package:TAS/user_pages/section_page.dart';
 import 'package:TAS/widgets/drawer_home.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
@@ -250,6 +252,9 @@ class _HomeState extends State<Home> {
         return SectionPage();
       case 7:
         return NewsPage();
+      case 8:
+        return NewsPage1(
+            newsCompany: context.watch<NewsProvider>().getnewsCompany);
     }
   }
 }

@@ -1,5 +1,5 @@
 name: TAS
-description: Tas company
+description: Спецтехника TAS
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -108,7 +108,7 @@ flutter:
         - asset: assets/fonts/Oswald-ExtraLight.ttf
     - family: Noto
       fonts:
-        - asset: assets/fonts/notosans/ttf
+        - asset: assets/fonts/notosans.ttf
 
   #   - family: Schyler
   #     fonts:
