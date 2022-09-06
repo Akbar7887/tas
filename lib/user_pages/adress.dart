@@ -68,44 +68,134 @@ class _AdressState extends State<Adress> {
     return Column(
       children: [
         Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.only(left: 20, right: 20, top: 10),
-          child: Text(
-            Ui.adressfix[context.watch<SimpleProvider>().getuzru]!,
-            style: TextStyle(
-                fontFamily: Ui.textstyle,
-                fontWeight: FontWeight.w500,
-                fontSize: 20),
+          child: Card(
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+                  child: Text(
+                    Ui.adressfix[context.watch<SimpleProvider>().getuzru]!,
+                    style: TextStyle(
+                        fontFamily: Ui.textstyle,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15),
+                  ),
+                ),
+                Divider(),
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Text(
+                    Ui.adress[context.watch<SimpleProvider>().getuzru]!,
+                    style: TextStyle(
+                        fontFamily: Ui.textstyle,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 15),
+                  ),
+                ),
+                Container(
+                  height: 30,
+                  child: Row(
+                    children: [
+                      Container(
+                        // alignment: Alignment.topRight,
+                        child: IconButton(
+                          onPressed: () {
+                            Ui.callNumber(Ui.phone);
+                          },
+                          icon: Icon(
+                            Icons.phone_android_outlined,
+                            size: 15,
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Ui.callNumber(Ui.phone);
+                        },
+                        child: Text(
+                          Ui.phone,
+                          style: TextStyle(
+                              fontFamily: Ui.textstyle,
+                              fontSize: 10,
+                              color: Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 30,
+                  child: Row(
+                    children: [
+                      Container(
+                        // alignment: Alignment.topRight,
+                        child: IconButton(
+                          onPressed: () {
+                            Ui.callNumber(Ui.phone1);
+                          },
+                          icon: Icon(
+                            Icons.phone_android_outlined,
+                            size: 15,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        // alignment: Alignment.topRight,
+                        child: TextButton(
+                          onPressed: () {
+                            Ui.callNumber(Ui.phone1);
+                          },
+                          child: Text(
+                            Ui.phone1,
+                            style: TextStyle(
+                                fontFamily: Ui.textstyle,
+                                fontSize: 10,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 30,
+                  child: Row(
+                    children: [
+                      Container(
+                        // alignment: Alignment.topRight,
+                        child: IconButton(
+                          onPressed: () {
+                            Ui.callNumber(Ui.phone2);
+                          },
+                          icon: Icon(
+                            Icons.phone_android_outlined,
+                            size: 15,
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Ui.callNumber(Ui.phone2);
+                        },
+                        child: Text(
+                          Ui.phone2,
+                          style: TextStyle(
+                              fontFamily: Ui.textstyle,
+                              fontSize: 10,
+                              color: Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        Divider(),
         Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(left: 20, right: 20),
-          child: Text(
-            Ui.adress[context.watch<SimpleProvider>().getuzru]!,
-            style: TextStyle(
-                fontFamily: Ui.textstyle,
-                fontWeight: FontWeight.w300,
-                fontSize: 20),
-          ),
-        ),
-        Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(left: 20, right: 20),
-          child: Text(
-            "Телефон: ${Ui.phone}",
-            style: TextStyle(
-                fontFamily: Ui.textstyle,
-                fontWeight: FontWeight.w300,
-                fontSize: 20),
-          ),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Container(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

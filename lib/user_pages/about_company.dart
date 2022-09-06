@@ -60,7 +60,7 @@ class AboutCompany extends StatelessWidget {
                 fontFamily: Ui.textstyle,
                 color: Colors.black,
                 fontSize: 15,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w900,
                 fontStyle: FontStyle.italic),
           ),
         ),
@@ -139,9 +139,10 @@ class AboutCompany extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                       style: TextStyle(
-                          color: Colors.black54,
+                          fontFamily: Ui.textstyle,
+                          color: Colors.black,
                           fontSize: 15,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w500,
                           fontStyle: FontStyle.italic),
                       text: Ui.descriptionf[
                           context.watch<SimpleProvider>().getuzru]),
@@ -170,8 +171,8 @@ class AboutCompany extends StatelessWidget {
             style: TextStyle(
                 fontFamily: Ui.textstyle,
                 color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
+                fontSize: 15,
+                fontWeight: FontWeight.w900,
                 fontStyle: FontStyle.italic),
           ),
         ),
@@ -187,7 +188,7 @@ class AboutCompany extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.black54,
                           fontSize: 15,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w500,
                           fontStyle: FontStyle.italic),
                       text: Ui.descriptionservice[
                           context.watch<SimpleProvider>().getuzru]),

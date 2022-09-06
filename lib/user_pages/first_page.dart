@@ -260,23 +260,22 @@ class _FirstPageState extends State<FirstPage> {
                     ? Colors.yellow
                     : Colors.white,
                 child: Card(
-                  child: Row(
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child:  Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Spacer(),
                         // VerticalDivider(color: Colors.black,width: 2,),
-                        Container(
-                          width: 150,
+                        Expanded(
                           // alignment: Alignment.topRight,
-                          padding: EdgeInsets.all(10),
                           child: Image.network(
                             "${Ui.url}download/model/${modelList[index].imagepath}",
                             height: 80,
                           ),
                         ),
-                        Container(
-                            width: 220,
-                            padding: EdgeInsets.all(10),
+                        Expanded(
+                          flex: 1,
                             // alignment: Alignment.topLeft,
                             child: Column(
                               // crossAxisAlignment: CrossAxisAlignment.end,
@@ -327,7 +326,7 @@ class _FirstPageState extends State<FirstPage> {
                             )),
                       ]),
                 ),
-              ));
+              )));
         });
   }
 }

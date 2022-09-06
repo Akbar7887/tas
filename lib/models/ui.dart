@@ -13,6 +13,9 @@ class Ui {
   // static final String url = 'http://localhost:8083/api/';
   // static final String urllogin = 'http://localhost:8083';
   static final String phone = "+998 78 147 00 80";
+  static final String phone1 = "+998 99 802 74 74";
+  static final String phone2 = "+998 94 688 00 99";
+
   static final String textstyle = 'Noto';
   static final String telegram = 't.me/tasuzcom';
   static final String inhstagram =
@@ -218,7 +221,7 @@ class Ui {
     }
   }
 
-  static callNumber() async {
-    bool? res = await FlutterPhoneDirectCaller.callNumber(Ui.phone);
+  static callNumber(phone) async {
+    bool? res = await FlutterPhoneDirectCaller.callNumber(phone);
   }
 }

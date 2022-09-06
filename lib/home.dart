@@ -15,7 +15,6 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:provider/provider.dart';
 
 import 'models/ui.dart';
@@ -25,10 +24,6 @@ class Home extends StatefulWidget {
 
   @override
   State<Home> createState() => _HomeState();
-}
-
-_callNumber() async {
-  return await FlutterPhoneDirectCaller.callNumber(Ui.phone);
 }
 
 class _HomeState extends State<Home> {
@@ -109,8 +104,8 @@ class _HomeState extends State<Home> {
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(50),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              // crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 IconButton(
                   onPressed: () {
@@ -118,8 +113,8 @@ class _HomeState extends State<Home> {
                   },
                   icon: Image.asset(
                     'assets/images/Instagram_icon.png',
-                    width: 30,
-                    height: 30,
+                    width: 20,
+                    height: 20,
                   ),
                 ),
                 IconButton(
@@ -129,7 +124,7 @@ class _HomeState extends State<Home> {
                   icon: Icon(
                     Icons.facebook,
                     color: Colors.blue,
-                    size: 30,
+                    size: 20,
                   ),
                 ),
                 IconButton(
@@ -139,34 +134,41 @@ class _HomeState extends State<Home> {
                   icon: Icon(
                     Icons.telegram,
                     color: Colors.blue,
-                    size: 30,
+                    size: 20,
                   ),
                 ),
                 SizedBox(
                   width: 5,
                 ),
-                InkWell(
-                  onTap: () {
-                    Ui.callNumber();
-                  },
-                  child: Icon(
-                    Icons.phone_android_outlined,
-                    size: 30,
-                  ),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                TextButton(
-                  onPressed: () {
-                    _callNumber();
-                  },
-                  child: Text(
-                    Ui.phone,
-                    style: TextStyle(
-                        fontFamily: Ui.textstyle,
-                        fontSize: 15,
-                        color: Colors.black),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        // alignment: Alignment.topRight,
+                        child: IconButton(
+                          onPressed: () {
+                            Ui.callNumber(Ui.phone);
+                          },
+                          icon: Icon(
+                            Icons.phone_android_outlined,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Ui.callNumber(Ui.phone);
+                        },
+                        child: Text(
+                          Ui.phone,
+                          style: TextStyle(
+                              fontFamily: Ui.textstyle,
+                              fontSize: 12,
+                              color: Colors.black),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

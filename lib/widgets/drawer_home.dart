@@ -17,13 +17,12 @@ class DrawerHome extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(
-                height: 220,
+                height: 300,
                 child: DrawerHeader(
                   decoration: BoxDecoration(
-                    color: Colors.amberAccent[100],
-                    borderRadius: BorderRadius.circular(20),
-                    border:  Border.all(color: Colors.amber, width: 0.5)
-                  ),
+                      color: Colors.amberAccent[100],
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.amber, width: 0.5)),
                   child: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -32,7 +31,6 @@ class DrawerHome extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-
                         Image.asset(
                           "assets/images/logo.png",
                           width: 100,
@@ -58,25 +56,102 @@ class DrawerHome extends StatelessWidget {
                           ),
                         ),
                         // Spacer(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        Column(
                           children: [
-                            Icon(
-                              Icons.phone_android_outlined,
-                              size: 20,
+                            Container(
+                              height: 30,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    // alignment: Alignment.topRight,
+                                    child: IconButton(
+                                      onPressed: () {
+                                        Ui.callNumber(Ui.phone);
+                                      },
+                                      icon: Icon(
+                                        Icons.phone_android_outlined,
+                                        size: 15,
+                                      ),
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Ui.callNumber(Ui.phone);
+                                    },
+                                    child: Text(
+                                      Ui.phone,
+                                      style: TextStyle(
+                                          fontFamily: Ui.textstyle,
+                                          fontSize: 10,
+                                          color: Colors.black),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(
-                              width: 5,
+                            Container(
+                              height: 30,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    // alignment: Alignment.topRight,
+                                    child: IconButton(
+                                      onPressed: () {
+                                        Ui.callNumber(Ui.phone1);
+                                      },
+                                      icon: Icon(
+                                        Icons.phone_android_outlined,
+                                        size: 15,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    // alignment: Alignment.topRight,
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Ui.callNumber(Ui.phone1);
+                                      },
+                                      child: Text(
+                                        Ui.phone1,
+                                        style: TextStyle(
+                                            fontFamily: Ui.textstyle,
+                                            fontSize: 10,
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            TextButton(
-                              onPressed: () {
-                                Ui.callNumber();
-                              },
-                              child: Text(
-                                Ui.phone,
-                                style: TextStyle(
-                                    fontFamily: Ui.textstyle,
-                                    color: Colors.black),
+                            Container(
+                              height: 30,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    // alignment: Alignment.topRight,
+                                    child: IconButton(
+                                      onPressed: () {
+                                        Ui.callNumber(Ui.phone2);
+                                      },
+                                      icon: Icon(
+                                        Icons.phone_android_outlined,
+                                        size: 15,
+                                      ),
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Ui.callNumber(Ui.phone2);
+                                    },
+                                    child: Text(
+                                      Ui.phone2,
+                                      style: TextStyle(
+                                          fontFamily: Ui.textstyle,
+                                          fontSize: 10,
+                                          color: Colors.black),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -145,11 +220,14 @@ class DrawerHome extends StatelessWidget {
                   // });
                   Navigator.pop(context);
                 },
-                child: Text(Ui.catalogs[context.watch<SimpleProvider>().getuzru]!,
+                child: Text(
+                    Ui.catalogs[context.watch<SimpleProvider>().getuzru]!,
                     style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
               ),
             ),
-            Divider(color: Colors.amberAccent,),
+            Divider(
+              color: Colors.amberAccent,
+            ),
             ListTile(
               title: InkWell(
                 onTap: () {
@@ -167,7 +245,8 @@ class DrawerHome extends StatelessWidget {
                   context.read<SimpleProvider>().changepage(5);
                   Navigator.pop(context);
                 },
-                child: Text(Ui.adressfix[context.watch<SimpleProvider>().getuzru]!,
+                child: Text(
+                    Ui.adressfix[context.watch<SimpleProvider>().getuzru]!,
                     style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
               ),
             )
