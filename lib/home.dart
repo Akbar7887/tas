@@ -102,7 +102,7 @@ class _HomeState extends State<Home> {
             ],
           ),
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(50),
+            preferredSize: Size.fromHeight(70),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               //crossAxisAlignment: CrossAxisAlignment.center,
