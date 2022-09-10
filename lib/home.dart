@@ -7,6 +7,7 @@ import 'package:TAS/user_pages/adress.dart';
 import 'package:TAS/user_pages/customer_form.dart';
 import 'package:TAS/user_pages/description_page.dart';
 import 'package:TAS/user_pages/first_page.dart';
+import 'package:TAS/user_pages/lising_page.dart';
 import 'package:TAS/user_pages/news_page.dart';
 import 'package:TAS/user_pages/news_page1.dart';
 import 'package:TAS/user_pages/section_page.dart';
@@ -84,7 +85,7 @@ class _HomeState extends State<Home> {
           // centerTitle: true,
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               getTitle()!,
               SizedBox(
@@ -102,7 +103,7 @@ class _HomeState extends State<Home> {
             ],
           ),
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(70),
+            preferredSize: Size.fromHeight(90),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               //crossAxisAlignment: CrossAxisAlignment.center,
@@ -220,7 +221,14 @@ class _HomeState extends State<Home> {
                   Icons.navigate_next_sharp,
                   color: Colors.black,
                 ),
-                title: Ui.h3[uz_ru])
+                title: Ui.lising[uz_ru]),
+            TabItem(
+                icon: Icon(
+                  Icons.navigate_next_sharp,
+                  color: Colors.black,
+                ),
+                title: Ui.h3[uz_ru]),
+
           ],
           onTap: (int index) {
             if (index == 0) {
@@ -229,6 +237,8 @@ class _HomeState extends State<Home> {
             } else if (index == 1) {
               context.read<SimpleProvider>().changepage(6);
             } else if (index == 2) {
+              context.read<SimpleProvider>().changepage(9);
+            } else if (index == 3) {
               context.read<SimpleProvider>().changepage(5);
             }
 
@@ -257,6 +267,8 @@ class _HomeState extends State<Home> {
       case 8:
         return NewsPage1(
             newsCompany: context.watch<NewsProvider>().getnewsCompany);
+      case 9:
+        return LisingPage();
     }
   }
 }

@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Tas group',
       theme: ThemeData(
         primarySwatch: Colors.amber,

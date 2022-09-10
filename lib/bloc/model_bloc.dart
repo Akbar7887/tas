@@ -1,3 +1,4 @@
+
 import 'package:TAS/bloc/producer_event.dart';
 import 'package:TAS/bloc/producer_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,5 +24,7 @@ class ModelBloc extends Bloc<ProducerEvent, ProducerState> {
     on<ProducerClearEvent>((event, emit) {
       emit(ProducerEmtyState());
     });
+
+
   }
 }

@@ -31,12 +31,12 @@ class _FirstPageState extends State<FirstPage> {
   @override
   void initState() {
     super.initState();
+
   }
 
   @override
   Widget build(BuildContext context) {
     uz_ru = Provider.of<SimpleProvider>(context).getuzru;
-
     return Column(children: [
       Container(
         height: 50,

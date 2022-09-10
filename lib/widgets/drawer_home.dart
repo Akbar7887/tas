@@ -225,6 +225,22 @@ class DrawerHome extends StatelessWidget {
                     style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
               ),
             ),
+            Divider(color: Colors.amberAccent,),
+            ListTile(
+              title: InkWell(
+                onTap: () {
+                  //context.read<SectionProvider>().changeSection(null);
+                  context.read<SimpleProvider>().changepage(9);
+                  // setState(() {
+                  //   textnext = Ui.h2[uz_ru]!;
+                  // });
+                  Navigator.pop(context);
+                },
+                child: Text(
+                    Ui.lising[context.watch<SimpleProvider>().getuzru]!,
+                    style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
+              ),
+            ),
             Divider(
               color: Colors.amberAccent,
             ),

@@ -7,9 +7,9 @@ class Ui {
   static final String name = "TAS";
   static final String fullname = "ЧП \"TEXNIKA ADVANS SERVIS\"";
   static final String url =
-     'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
-  static final String urllogin =
-    'https://admin.tascom.uz:8083';
+      'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
+  static final String urllogin = 'https://admin.tascom.uz:8083';
+
   // static final String url = 'http://localhost:8083/api/';
   // static final String urllogin = 'http://localhost:8083';
   static final String phone = "+998 78 147 00 80";
@@ -22,19 +22,90 @@ class Ui {
       'www.instagram.com/p/CfLO258orDI/?igshid=MDJmNzVkMjY=';
   static final String facebook = 'www.facebook.com/tasuzcom/';
 
+  // ================ Lising ==================
+
+  static final Map<dynamic, String> lising = {
+    Uz_ru.UZ: "Kredit",
+    Uz_ru.RU: "Кредит"
+  };
+
+  static final Map<dynamic, String> kalkulyat = {
+    Uz_ru.UZ: "Kredit kalkulyatori:",
+    Uz_ru.RU: "Кредитный калькулятор:"
+  };
+  static final Map<dynamic, String> summatexniki = {
+    Uz_ru.UZ: "Texnika narxi",
+    Uz_ru.RU: "Стоимость техники"
+  };
+  static final Map<dynamic, String> advonceproc = {
+    Uz_ru.UZ: "Avans summasi:",
+    Uz_ru.RU: "Сумма аванса:"
+  };
+  static final Map<dynamic, String> marga = {
+    Uz_ru.UZ: "Marja:",
+    Uz_ru.RU: "Маржа:"
+  };
+  static final Map<dynamic, String> srok = {
+    Uz_ru.UZ: "Muddati:",
+    Uz_ru.RU: "Срок:"
+  };
+  static final Map<dynamic, String> komissiya = {
+    Uz_ru.UZ: "Komissiya:",
+    Uz_ru.RU: "Комиссия:"
+  };
+
+  static final Map<dynamic, String> kreditsum = {
+    Uz_ru.UZ: "Kredit summasi:",
+    Uz_ru.RU: "Кредитная сумма:"
+  };
+
+  static final Map<dynamic, String> kredirtayausloviya = {
+    Uz_ru.UZ: "Kredit shartlari:",
+    Uz_ru.RU: "Кредитная условия:"
+  };
+  static final Map<dynamic, String> kredittable = {
+    Uz_ru.UZ: "Kredit grafigi:",
+    Uz_ru.RU: "Кредитный график:"
+  };
+
+  static final Map<dynamic, String> mes = {
+    Uz_ru.UZ: "Oy",
+    Uz_ru.RU: "Месяц"
+  };
+  static final Map<dynamic, String> osndolg = {
+    Uz_ru.UZ: "Asosiy qarz \nyopilishi \n(sum)",
+    Uz_ru.RU: "Погаш. \n осн. долг. \n (сум)"
+  };
+  static final Map<dynamic, String> procpog = {
+    Uz_ru.UZ: "Oylik foiz \n (sum)",
+    Uz_ru.RU: "% Погашения \n (сум)"
+  };
+  static final Map<dynamic, String> summaplateja = {
+    Uz_ru.UZ: "Tulov miqdori \n (sum)",
+    Uz_ru.RU: "Сумма платежа \n (сум)"
+  };
+
+
+  static final Map<dynamic, String> remainder = {
+    Uz_ru.UZ: "Ostatok dolga \n (sum)",
+    Uz_ru.RU: "Остаток долга \n (сум)"
+  };
+  static final Map<dynamic, String> model = {
+    Uz_ru.UZ: "Model",
+    Uz_ru.RU: "Модель"
+  };
   //=============== Section ===================
   static final Map<dynamic, String> catalogs = {
     Uz_ru.UZ: "Kataloglar",
     Uz_ru.RU: "Каталоги"
   };
 
+
   //===============Adress =========================
 
   static final Map<dynamic, String> title = {
-    Uz_ru.UZ:
-    "Uzbekiston учун maxsus texnikalar",
-    Uz_ru.RU:
-    "Спецтехника для Узбекистана"
+    Uz_ru.UZ: "Uzbekiston учун maxsus texnikalar",
+    Uz_ru.RU: "Спецтехника для Узбекистана"
   };
 
   static final Map<dynamic, String> adress = {
@@ -54,12 +125,12 @@ class Ui {
     Uz_ru.UZ: "Kompanya haqida",
     Uz_ru.RU: "О Компании"
   };
-  static final Map<dynamic, String>  choose = {
+  static final Map<dynamic, String> choose = {
     Uz_ru.UZ: "Tanlovingiz",
     Uz_ru.RU: "Ваше выбор!"
   };
 
-  static final Map<dynamic, String>  applyphone = {
+  static final Map<dynamic, String> applyphone = {
     Uz_ru.UZ: "Qo'ng'iroq buyurtma berish",
     Uz_ru.RU: "Заказать звонок"
   };
@@ -76,8 +147,8 @@ class Ui {
 
   static final Map<dynamic, String> description = {
     Uz_ru.UZ:
-        "TEXNIKA ADVANS SERVIS Kompaniyasi 2009-yilda tashkil etilgan va XXR dan maxsus texnikalar, uskunalar hamda ehtiyot qismlar yetkazib berish bo‘yicha eng ishonchli kompaniyalardan biri hisoblanadi.\nKompaniyamiz tomonidan yetkazib beriladigan maxsus texnika, uskunalar va ehtiyot qismlari eksport variantida ishlab chiqarilgan bo'lib, yuqori sifat standartlariga to'la javob beradi.\n● 20 000 dan ziyod texnika va jihozlarni yetkazib berilishi.\n● 12 yildan buyon bozorda.\n● 12 oy (1 yil yoki 2000 motosoat kafolat).\nBugungi kunda TEXNIKA ADVANS SERVIS kompaniyasi jahon standartlari darajasida qurilish, yo‘l, kon-qazish maxsus texnikalari shuningdek, beton-asfalt zavodlarining barcha turlarini ishlab chiqaruvchi XCMG, SHACMAN, SHANTUI kabi jahon brendlarini O‘zbekiston bozorida rasman taqdim etadi."
-    ,Uz_ru.RU:
+        "TEXNIKA ADVANS SERVIS Kompaniyasi 2009-yilda tashkil etilgan va XXR dan maxsus texnikalar, uskunalar hamda ehtiyot qismlar yetkazib berish bo‘yicha eng ishonchli kompaniyalardan biri hisoblanadi.\nKompaniyamiz tomonidan yetkazib beriladigan maxsus texnika, uskunalar va ehtiyot qismlari eksport variantida ishlab chiqarilgan bo'lib, yuqori sifat standartlariga to'la javob beradi.\n● 20 000 dan ziyod texnika va jihozlarni yetkazib berilishi.\n● 12 yildan buyon bozorda.\n● 12 oy (1 yil yoki 2000 motosoat kafolat).\nBugungi kunda TEXNIKA ADVANS SERVIS kompaniyasi jahon standartlari darajasida qurilish, yo‘l, kon-qazish maxsus texnikalari shuningdek, beton-asfalt zavodlarining barcha turlarini ishlab chiqaruvchi XCMG, SHACMAN, SHANTUI kabi jahon brendlarini O‘zbekiston bozorida rasman taqdim etadi.",
+    Uz_ru.RU:
         "Компания \"TEXNIKA ADVANS SERVIS\" была основана в 2009 году и является одной из надежных компаний по осуществлению поставок спецтехники, оборудования и запчастей из KHP\. \n Спецтехника, оборудование и запчасти, поставляемые нашей компанией, выполнены в экспортном варианте и соответствуют высоким стандартам качества. \n●  Более 20 000 поставок техники и оборудования. \n●  12 лет на рынке.\n● 12 месяцев  (гарантия 1 год или 2000 моточасов). \n На сегодняшний день компания TEXNIKA ADVANS SERVIS официально представляет на рынке Узбекистана такие мировые бренды как XCMG, SHACMAN, SHANTUI, которые производят весь спектр строительной, дорожной, карьерной спецтехники и заводов по производству бетона и асфальта на уровне мировых стандартов."
   };
 
@@ -93,7 +164,8 @@ class Ui {
         "●  Диагностическое оборудование и официальное программное обеспечение для эффективной диагностики различных систем двигателей.\n●  Постоянное присутствие технических специалистов на базе сервисного центра  и совместная работа по устранению возникающих технических проблем во время эксплуатации техники."
   };
   static final Map<dynamic, String> tema2 = {
-    Uz_ru.UZ: "Avtorizatsiyalashgan xizmat ko'rsatish markazining afzalliklari:",
+    Uz_ru.UZ:
+        "Avtorizatsiyalashgan xizmat ko'rsatish markazining afzalliklari:",
     Uz_ru.RU: "Преимущества авторизованного сервисного центра:"
   };
   static final Map<dynamic, String> descriptionf = {

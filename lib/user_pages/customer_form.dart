@@ -79,7 +79,7 @@ class _CustomerFormState extends State<CustomerForm> {
               ],
             )),
         Container(
-          height: 200,
+          height: 170,
           // width: 150,
           // alignment: Alignment.topRight,
           padding: EdgeInsets.all(10),
@@ -127,13 +127,14 @@ class _CustomerFormState extends State<CustomerForm> {
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 5,
         ),
         Form(
           key: _formkeyphone,
           child: Padding(
             padding: EdgeInsets.only(left: 10, right: 10),
             child: TextFormField(
+              keyboardType: TextInputType.number,
               controller: _controllerphone,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
               cursorColor: Colors.indigo,
@@ -212,7 +213,7 @@ class _CustomerFormState extends State<CustomerForm> {
           height: 10,
         ),
         Container(
-            margin: EdgeInsets.only(left: 30, right: 30),
+            margin: EdgeInsets.only(left: 50, right: 50),
             height: 60,
             // decoration: BoxDecoration(
             //     border: Border.all(color: Colors.indigo,width: 0.5),
@@ -223,7 +224,7 @@ class _CustomerFormState extends State<CustomerForm> {
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        side: BorderSide(color: Colors.indigo))),
+                       )),
               ),
               onPressed: () {
                 // _formkeyfio.currentState!.validate();
