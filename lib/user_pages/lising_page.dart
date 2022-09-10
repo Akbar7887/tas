@@ -155,7 +155,7 @@ class _LisingPageState extends State<LisingPage> {
                         value: modelSet,
                         items: listModelSet.map((e) {
                           return DropdownMenuItem(
-                            child: Text(e.name),
+                            child: Text('${e.producername} - ${e.section!.name} - ${e.name} '),
                             value: e,
                           );
                         }).toList(),
