@@ -53,9 +53,9 @@ class _AdressState extends State<Adress> {
         await getBytesFromAsset('assets/images/logo.png');
     final icona = await BitmapDescriptor.fromBytes(markerIcon!);
     Marker marker = Marker(
-        markerId: MarkerId("Belgaum"),
+        markerId: MarkerId(Ui.name),
         position: LatLng(41.33279668831619, 69.28374709224211),
-        infoWindow: InfoWindow(title: "Belgaum"),
+        infoWindow: InfoWindow(title: Ui.name),
         icon: icona);
 
     markers.add(marker);
