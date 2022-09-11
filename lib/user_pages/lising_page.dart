@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:pattern_formatter/pattern_formatter.dart';
 
 import '../models/ModelSet.dart';
 import '../models/credit.dart';
@@ -19,11 +20,13 @@ class LisingPage extends StatefulWidget {
 
 class _LisingPageState extends State<LisingPage> {
   Uz_ru uz_ru = Uz_ru.RU;
-  TextEditingController amount = TextEditingController(text: '0.00');
+  TextEditingController amount = TextEditingController();
   TextEditingController advancepoc = TextEditingController(text: '0.00');
   TextEditingController advance = TextEditingController(text: '0.00');
   TextEditingController komissiya = TextEditingController(text: '0.00');
-  final numberFormat = NumberFormat.decimalPattern('en_us');
+  final numberFormat = NumberFormat('###,###.00', 'en_US');
+
+  //final numberFormat = NumberFormat.compactSimpleCurrency();
 
   // TextEditingController srokgod = TextEditingController();
   List<int> listadvance = [];
@@ -38,6 +41,7 @@ class _LisingPageState extends State<LisingPage> {
   List<Credit> listgrafik = [];
   List<ModelSet> listModelSet = [];
   ModelSet? modelSet;
+  double advanceN = 0;
 
   void getlistadvance() {
     for (int k = 10; k <= 100; k = k + 10) {
@@ -120,13 +124,7 @@ class _LisingPageState extends State<LisingPage> {
     listModelSet = context.watch<ModelsProvider>().getlist;
     return ListView(
       children: [
-        Container(
-            padding: EdgeInsets.only(top: 10, left: 15),
-            alignment: Alignment.topLeft,
-            child: Text(
-              Ui.kalkulyat[uz_ru]!,
-              style: TextStyle(fontFamily: Ui.textstyle, fontSize: 15),
-            )),
+       
         Container(
           // decoration:
           // BoxDecoration(borderRadius: BorderRadius.circular(20)),
@@ -142,7 +140,7 @@ class _LisingPageState extends State<LisingPage> {
                   children: [
                     Container(
                       child: Text(
-                        Ui.kredirtayausloviya[uz_ru]!,
+                        Ui.kalkulyat[uz_ru]!,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -155,22 +153,25 @@ class _LisingPageState extends State<LisingPage> {
                         value: modelSet,
                         items: listModelSet.map((e) {
                           return DropdownMenuItem(
-                            child: Text('${e.producername} - ${e.section!.name} - ${e.name} '),
+                            child: Text(
+                                '${e.producername} - ${e.section!.name} - ${e.name} '),
                             value: e,
                           );
                         }).toList(),
                         onChanged: (newModelSet) {
                           setState(() {
                             modelSet = newModelSet;
-                            amount.text = modelSet!.priceuzs!.toString();
+                            amount.text =
+                                numberFormat.format(modelSet!.priceuzs!);
+
                             if (modelSet!.priceuzs != 0) {
-                              advance.text =
-                                  (modelSet!.priceuzs! * (i! / 100)).toString();
-                              komissiya.text =
-                                  (modelSet!.priceuzs! * (kom / 100))
-                                      .toString();
+                              advance.text = numberFormat
+                                  .format((modelSet!.priceuzs! * (i! / 100)));
+                              advanceN = (modelSet!.priceuzs! * (i! / 100));
+                              komissiya.text = numberFormat
+                                  .format((modelSet!.priceuzs! * (kom / 100)));
                               kreditamount = modelSet!.priceuzs! -
-                                  double.parse(advance.text);
+                                  advanceN; // double.parse(advance.text);
                               listgrafik = getGrafik();
                             } else {
                               advance.text = "";
@@ -187,18 +188,19 @@ class _LisingPageState extends State<LisingPage> {
                       height: 40,
                       child: TextFormField(
                         controller: amount,
-                        keyboardType:
-                            TextInputType.numberWithOptions(decimal: true),
+                        keyboardType: TextInputType.number,
                         inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                              RegExp(r'^\d+\.?\d{0,2}')),
+                          LengthLimitingTextInputFormatter(19),
+                          ThousandsFormatter(),
+                          // FilteringTextInputFormatter.allow(
+                          //     RegExp(r'^\d+\.?\d{0,2}')),
                           // FilteringTextInputFormatter.digitsOnly
                         ],
                         decoration: InputDecoration(
                           labelText: Ui.summatexniki[uz_ru],
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                width: 1,
+                                width: 0.5,
                                 color: Colors.indigo,
                               ),
                               borderRadius: BorderRadius.circular(10)),
@@ -209,15 +211,22 @@ class _LisingPageState extends State<LisingPage> {
                         ),
                         onChanged: (newValue) {
                           setState(() {
-                            if (newValue.isNotEmpty) {
+                            if (double.parse(newValue.replaceAll(",", "")) !=
+                                0) {
                               advance.text =
-                                  (double.parse(newValue) * (i! / 100))
+                                  (double.parse(newValue.replaceAll(",", "")) *
+                                          (i! / 100))
                                       .toString();
+                              advanceN =
+                                  (double.parse(newValue.replaceAll(",", "")) *
+                                      (i! / 100));
                               komissiya.text =
-                                  (double.parse(newValue) * (kom / 100))
+                                  (double.parse(newValue.replaceAll(",", "")) *
+                                          (kom / 100))
                                       .toString();
-                              kreditamount = double.parse(newValue) -
-                                  double.parse(advance.text);
+                              kreditamount =
+                                  double.parse(newValue.replaceAll(",", "")) -
+                                      advanceN;
                               listgrafik = getGrafik();
                             } else {
                               advance.text = "";
@@ -258,11 +267,16 @@ class _LisingPageState extends State<LisingPage> {
                               setState(() {
                                 i = newvalue!;
                                 if (amount.text.isNotEmpty) {
-                                  advance.text = (double.parse(amount.text) *
+                                  advance.text = (double.parse(
+                                              amount.text.replaceAll(",", "")) *
                                           (newvalue / 100))
                                       .toString();
-                                  kreditamount = double.parse(amount.text) -
-                                      double.parse(advance.text);
+                                  advanceN = (double.parse(
+                                          amount.text.replaceAll(",", "")) *
+                                      (newvalue / 100));
+                                  kreditamount = double.parse(
+                                          amount.text.replaceAll(",", "")) -
+                                      advanceN;
                                   listgrafik = getGrafik();
                                 }
                               });
@@ -278,18 +292,21 @@ class _LisingPageState extends State<LisingPage> {
                             height: 40,
                             child: TextFormField(
                               enabled: false,
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.numberWithOptions(
+                                  decimal: true),
                               controller: advance,
                               inputFormatters: [
-                                FilteringTextInputFormatter.allow(
-                                    RegExp(r'[0-9]')),
-                                FilteringTextInputFormatter.digitsOnly
+                                LengthLimitingTextInputFormatter(19),
+                                ThousandsFormatter(),
+                                // FilteringTextInputFormatter.allow(
+                                //     RegExp(r'[0-9]')),
+                                // FilteringTextInputFormatter.digitsOnly
                               ],
                               decoration: InputDecoration(
                                 // labelText: Ui.advonceproc[uz_ru],
                                 focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      width: 1,
+                                      width: 0.5,
                                       color: Colors.indigo,
                                     ),
                                     borderRadius: BorderRadius.circular(10)),
@@ -410,10 +427,10 @@ class _LisingPageState extends State<LisingPage> {
                                 setState(() {
                                   kom = newvalu1!;
                                   if (amount.text.isNotEmpty) {
-                                    komissiya.text =
-                                        (double.parse(amount.text) *
-                                                (newvalu1 / 100))
-                                            .toString();
+                                    komissiya.text = (double.parse(amount.text
+                                                .replaceAll(",", "")) *
+                                            (newvalu1 / 100))
+                                        .toString();
                                   }
                                 });
                               },
@@ -431,9 +448,8 @@ class _LisingPageState extends State<LisingPage> {
                                 enabled: false,
                                 controller: komissiya,
                                 inputFormatters: [
-                                  FilteringTextInputFormatter.allow(
-                                      RegExp(r'[0-9]')),
-                                  FilteringTextInputFormatter.digitsOnly
+                                  LengthLimitingTextInputFormatter(19),
+                                  ThousandsFormatter(),
                                 ],
                                 decoration: InputDecoration(
                                   // labelText: Ui.advonceproc[uz_ru],
@@ -506,16 +522,20 @@ class _LisingPageState extends State<LisingPage> {
             Container(
               child: DataTable(
                 headingRowHeight: 40,
+                headingTextStyle:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
                 headingRowColor:
                     MaterialStateProperty.all(Colors.amberAccent[100]),
                 dataRowHeight: 17,
-                columnSpacing: 5,
-                border: TableBorder.all(width: 0.5),
+                columnSpacing: 0.5,
+                border: TableBorder.all(width: 0.1),
                 columns: [
                   DataColumn(
-                      label: Text(Ui.mes[uz_ru]!,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 10))),
+                      label: Padding(
+                        padding: EdgeInsets.only(right: 10),
+                          child: Text(Ui.mes[uz_ru]!,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 10)))),
                   DataColumn(
                       label: Text(Ui.osndolg[uz_ru]!,
                           textAlign: TextAlign.center,
@@ -546,19 +566,21 @@ class _LisingPageState extends State<LisingPage> {
                           ? MaterialStateProperty.all(Colors.amberAccent[100])
                           : MaterialStateProperty.all(Colors.white),
                       cells: [
-                        DataCell(Text(
+                        DataCell( Text(
+                          textAlign: TextAlign.center,
                           listgrafik.last == e ? "Итого:" : e.mec.toString(),
                           style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 9,
                               fontWeight: listgrafik.last == e
                                   ? FontWeight.bold
                                   : FontWeight.w400),
                         )),
                         DataCell(
                           Text(
-                            e.maindebt!.toStringAsFixed(2),
+                            textAlign: TextAlign.end,
+                            numberFormat.format(e.maindebt!),
                             style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 9,
                                 fontWeight: listgrafik.last == e
                                     ? FontWeight.bold
                                     : FontWeight.w400),
@@ -566,27 +588,29 @@ class _LisingPageState extends State<LisingPage> {
                         ),
                         DataCell(
                           Text(
-                            e.procertamount!.toStringAsFixed(2),
+                            textAlign: TextAlign.end,
+                            numberFormat.format(e.procertamount!),
                             style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 9,
                                 fontWeight: listgrafik.last == e
                                     ? FontWeight.bold
                                     : FontWeight.w400),
                           ),
                         ),
                         DataCell(
-                          Text(e.total!.toStringAsFixed(2),
+                          Text(numberFormat.format(e.total!),
+                              textAlign: TextAlign.end,
                               style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold)),
+                                  fontSize: 9, fontWeight: FontWeight.bold)),
                         ),
                         DataCell(
                           Container(
                               child: Text(
                                   listgrafik.last == e
                                       ? ""
-                                      : e.remainder!.toStringAsFixed(2),
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 10)),
+                                      : numberFormat.format(e.remainder!),
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(fontSize: 9)),
                               alignment: Alignment.centerRight),
                         ),
                       ]);
