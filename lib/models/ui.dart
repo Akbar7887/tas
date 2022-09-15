@@ -16,7 +16,7 @@ class Ui {
   static final String phone1 = "+998 99 802 74 74";
   static final String phone2 = "+998 94 688 00 99";
 
-  static final String textstyle = 'Play';//'Noto';
+  static final String textstyle = 'Play'; //'Noto';
   static final String telegram = 't.me/tasuzcom';
   static final String inhstagram =
       'www.instagram.com/p/CfLO258orDI/?igshid=MDJmNzVkMjY=';
@@ -68,10 +68,7 @@ class Ui {
     Uz_ru.RU: "Кредитный график:"
   };
 
-  static final Map<dynamic, String> mes = {
-    Uz_ru.UZ: "Oy",
-    Uz_ru.RU: "Месяц"
-  };
+  static final Map<dynamic, String> mes = {Uz_ru.UZ: "Oy", Uz_ru.RU: "Месяц"};
   static final Map<dynamic, String> osndolg = {
     Uz_ru.UZ: "Asosiy qarz \nyopilishi \n(sum)",
     Uz_ru.RU: "Погаш. \n осн. долг. \n (сум)"
@@ -85,7 +82,6 @@ class Ui {
     Uz_ru.RU: "Сумма платежа \n (сум)"
   };
 
-
   static final Map<dynamic, String> remainder = {
     Uz_ru.UZ: "Ostatok dolga \n (sum)",
     Uz_ru.RU: "Остаток долга \n (сум)"
@@ -94,12 +90,12 @@ class Ui {
     Uz_ru.UZ: "Model",
     Uz_ru.RU: "Модель"
   };
+
   //=============== Section ===================
   static final Map<dynamic, String> catalogs = {
     Uz_ru.UZ: "Kataloglar",
     Uz_ru.RU: "Каталоги"
   };
-
 
   //===============Adress =========================
 
@@ -264,6 +260,11 @@ class Ui {
     Uz_ru.UZ:
         "YUQ! setda muammo borligi sababli, Sizning murojatingiz qabul qilinmadi!",
     Uz_ru.RU: "Просим повторить заказ из за не поладки в сети!"
+  };
+
+  static final Map<dynamic, String> exit = {
+    Uz_ru.UZ: "Chiqish",
+    Uz_ru.RU: "Выход"
   };
 
   static callInstagram() async {

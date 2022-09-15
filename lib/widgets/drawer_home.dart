@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -264,6 +266,23 @@ class DrawerHome extends StatelessWidget {
                 child: Text(
                     Ui.adressfix[context.watch<SimpleProvider>().getuzru]!,
                     style: TextStyle(fontFamily: Ui.textstyle, fontSize: 20)),
+              ),
+            ),
+            Divider(),
+            ListTile(
+              title: InkWell(
+                onTap: () {
+                  // context.read<SimpleProvider>().changepage(5);
+                  // Navigator.pop(context);
+                  exit(0);
+                },
+                child:
+                Text(Ui.exit[context.watch<SimpleProvider>().getuzru]!,
+                    style: TextStyle(
+                      fontFamily: Ui.textstyle,
+                      fontSize: 20,
+                      // color: Colors.white,
+                    )),
               ),
             )
           ],

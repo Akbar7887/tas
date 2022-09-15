@@ -107,12 +107,6 @@ class _HomeState extends State<Home> {
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(30.0),
               )),
-          // centerTitle: true,
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [],
-          ),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(90),
             child: Row(
