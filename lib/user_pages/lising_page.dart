@@ -124,7 +124,6 @@ class _LisingPageState extends State<LisingPage> {
     listModelSet = context.watch<ModelsProvider>().getlist;
     return ListView(
       children: [
-       
         Container(
           // decoration:
           // BoxDecoration(borderRadius: BorderRadius.circular(20)),
@@ -142,19 +141,29 @@ class _LisingPageState extends State<LisingPage> {
                       child: Text(
                         Ui.kalkulyat[uz_ru]!,
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: Ui.textstyle,
+                        ),
                       ),
                     ),
                     SizedBox(height: 10),
                     Container(
                       child: DropdownButton<ModelSet>(
-                        hint: Text(Ui.model[uz_ru]!),
+                        hint: Text(
+                          Ui.model[uz_ru]!,
+                          style: TextStyle(
+                            fontFamily: Ui.textstyle,
+                          ),
+                        ),
                         isExpanded: true,
                         value: modelSet,
                         items: listModelSet.map((e) {
                           return DropdownMenuItem(
                             child: Text(
-                                '${e.producername} - ${e.section!.name} - ${e.name} '),
+                              '${e.producername} - ${e.section!.name} - ${e.name} ',
+                              style: TextStyle(fontFamily: Ui.textstyle),
+                            ),
                             value: e,
                           );
                         }).toList(),
@@ -187,6 +196,9 @@ class _LisingPageState extends State<LisingPage> {
                     Container(
                       height: 40,
                       child: TextFormField(
+                        style: TextStyle(
+                          fontFamily: Ui.textstyle,
+                        ),
                         controller: amount,
                         keyboardType: TextInputType.number,
                         inputFormatters: [
@@ -245,7 +257,9 @@ class _LisingPageState extends State<LisingPage> {
                       child: Text(
                         Ui.advonceproc[uz_ru]!,
                         style: TextStyle(
-                            fontWeight: FontWeight.w500, color: Colors.blue),
+                            fontWeight: FontWeight.w500,
+                            color: Colors.blue,
+                            fontFamily: Ui.textstyle),
                       ),
                     ),
                     Container(
@@ -259,7 +273,12 @@ class _LisingPageState extends State<LisingPage> {
                             value: i,
                             items: listadvance.map((e) {
                               return DropdownMenuItem<int>(
-                                child: Text('${e.toString()} %'),
+                                child: Text(
+                                  '${e.toString()} %',
+                                  style: TextStyle(
+                                    fontFamily: Ui.textstyle,
+                                  ),
+                                ),
                                 value: e,
                               );
                             }).toList(),
@@ -291,6 +310,9 @@ class _LisingPageState extends State<LisingPage> {
                           child: Container(
                             height: 40,
                             child: TextFormField(
+                              style: TextStyle(
+                                fontFamily: Ui.textstyle,
+                              ),
                               enabled: false,
                               keyboardType: TextInputType.numberWithOptions(
                                   decimal: true),
@@ -333,6 +355,7 @@ class _LisingPageState extends State<LisingPage> {
                               Ui.marga[uz_ru]!,
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
+                                  fontFamily: Ui.textstyle,
                                   color: Colors.blue),
                             ),
                           ),
@@ -347,7 +370,12 @@ class _LisingPageState extends State<LisingPage> {
                               value: marja,
                               items: listmarga.map((e) {
                                 return DropdownMenuItem<int>(
-                                  child: Text('${e.toString()} %'),
+                                  child: Text(
+                                    '${e.toString()} %',
+                                    style: TextStyle(
+                                      fontFamily: Ui.textstyle,
+                                    ),
+                                  ),
                                   value: e,
                                 );
                               }).toList(),
@@ -368,6 +396,7 @@ class _LisingPageState extends State<LisingPage> {
                               Ui.srok[uz_ru]!,
                               style: TextStyle(
                                   fontWeight: FontWeight.w500,
+                                  fontFamily: Ui.textstyle,
                                   color: Colors.blue),
                             ),
                           ),
@@ -382,7 +411,12 @@ class _LisingPageState extends State<LisingPage> {
                               value: srok,
                               items: listsrok.map((e) {
                                 return DropdownMenuItem<int>(
-                                  child: Text('${e.toString()}'),
+                                  child: Text(
+                                    '${e.toString()}',
+                                    style: TextStyle(
+                                      fontFamily: Ui.textstyle,
+                                    ),
+                                  ),
                                   value: e,
                                 );
                               }).toList(),
@@ -405,7 +439,10 @@ class _LisingPageState extends State<LisingPage> {
                       child: Text(
                         Ui.komissiya[uz_ru]!,
                         style: TextStyle(
-                            fontWeight: FontWeight.w500, color: Colors.blue),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.blue,
+                          fontFamily: Ui.textstyle,
+                        ),
                       ),
                     ),
                     Container(
@@ -419,7 +456,12 @@ class _LisingPageState extends State<LisingPage> {
                               value: kom,
                               items: listkom.map((e) {
                                 return DropdownMenuItem<int>(
-                                  child: Text('${e.toString()} %'),
+                                  child: Text(
+                                    '${e.toString()} %',
+                                    style: TextStyle(
+                                      fontFamily: Ui.textstyle,
+                                    ),
+                                  ),
                                   value: e,
                                 );
                               }).toList(),
@@ -445,6 +487,9 @@ class _LisingPageState extends State<LisingPage> {
                               height: 40,
                               child: TextFormField(
                                 keyboardType: TextInputType.number,
+                                style: TextStyle(
+                                  fontFamily: Ui.textstyle,
+                                ),
                                 enabled: false,
                                 controller: komissiya,
                                 inputFormatters: [
@@ -532,7 +577,7 @@ class _LisingPageState extends State<LisingPage> {
                 columns: [
                   DataColumn(
                       label: Padding(
-                        padding: EdgeInsets.only(right: 10),
+                          padding: EdgeInsets.only(right: 10),
                           child: Text(Ui.mes[uz_ru]!,
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 10)))),
@@ -548,17 +593,17 @@ class _LisingPageState extends State<LisingPage> {
                     style: TextStyle(fontSize: 10),
                   )),
                   DataColumn(
-                      label: Text(Ui.summaplateja[uz_ru]!,
-                          textAlign: TextAlign.center,
-                          // overflow: TextOverflow.,
-                          style: TextStyle(fontSize: 10))),
-                  DataColumn(
                       label: Text(
                     Ui.remainder[uz_ru]!,
                     textAlign: TextAlign.center,
                     // overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: 10),
                   )),
+                  DataColumn(
+                      label: Text(Ui.summaplateja[uz_ru]!,
+                          textAlign: TextAlign.center,
+                          // overflow: TextOverflow.,
+                          style: TextStyle(fontSize: 10))),
                 ],
                 rows: listgrafik.map((e) {
                   return DataRow(
@@ -566,7 +611,7 @@ class _LisingPageState extends State<LisingPage> {
                           ? MaterialStateProperty.all(Colors.amberAccent[100])
                           : MaterialStateProperty.all(Colors.white),
                       cells: [
-                        DataCell( Text(
+                        DataCell(Text(
                           textAlign: TextAlign.center,
                           listgrafik.last == e ? "Итого:" : e.mec.toString(),
                           style: TextStyle(
@@ -598,12 +643,6 @@ class _LisingPageState extends State<LisingPage> {
                           ),
                         ),
                         DataCell(
-                          Text(numberFormat.format(e.total!),
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                  fontSize: 9, fontWeight: FontWeight.bold)),
-                        ),
-                        DataCell(
                           Container(
                               child: Text(
                                   listgrafik.last == e
@@ -612,6 +651,12 @@ class _LisingPageState extends State<LisingPage> {
                                   textAlign: TextAlign.end,
                                   style: TextStyle(fontSize: 9)),
                               alignment: Alignment.centerRight),
+                        ),
+                        DataCell(
+                          Text(numberFormat.format(e.total!),
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                  fontSize: 9, fontWeight: FontWeight.bold)),
                         ),
                       ]);
                 }).toList(),

@@ -40,21 +40,24 @@ class _HomeState extends State<Home> {
           },
           child: Image.asset(
             'assets/images/logo.png',
-            width: 80,
+            width: 90,
           ));
     } else if (context.read<SimpleProvider>().getpage == 2) {
-      return InkWell(
-        onTap: () {
-          context.read<SimpleProvider>().changepage(1);
-        },
-        child: Text(
-          Ui.choose[context.watch<SimpleProvider>().getuzru]!,
-          style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontFamily: "Times New Roman",
-              fontSize: 22),
-        ),
-      );
+      return SizedBox(
+          width: 100,
+          height: 50,
+          child: InkWell(
+            onTap: () {
+              context.read<SimpleProvider>().changepage(1);
+            },
+            child: Text(
+              Ui.choose[context.watch<SimpleProvider>().getuzru]!,
+              style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontFamily: Ui.textstyle,
+                  fontSize: 22),
+            ),
+          ));
     } else if (context.read<SimpleProvider>().getpage == 3) {
       return InkWell(
         onTap: () {
@@ -64,7 +67,7 @@ class _HomeState extends State<Home> {
           Ui.applyphone[context.watch<SimpleProvider>().getuzru]!,
           style: TextStyle(
               fontWeight: FontWeight.w700,
-              fontFamily: "Times New Roman",
+              fontFamily: Ui.textstyle,
               fontSize: 15),
         ),
       );
@@ -77,6 +80,28 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           backgroundColor: Colors.amberAccent[100],
           elevation: 1,
+          flexibleSpace: Padding(
+            padding: EdgeInsets.only(top: 65, left: 65),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                getTitle()!,
+                SizedBox(
+                  width: 5,
+                ),
+                Container(
+                  child: Text(
+                    "${Ui.title[context.watch<SimpleProvider>().getuzru]}",
+                    style: TextStyle(
+                        fontFamily: Ui.textstyle,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           shape: RoundedRectangleBorder(
               side: BorderSide(width: 0.5, color: Colors.amber),
               borderRadius: BorderRadius.vertical(
@@ -86,21 +111,7 @@ class _HomeState extends State<Home> {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              getTitle()!,
-              SizedBox(
-                width: 5,
-              ),
-              Container(
-                child: Text(
-                  "${Ui.title[context.watch<SimpleProvider>().getuzru]}",
-                  style: TextStyle(
-                      fontFamily: Ui.textstyle,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 10),
-                ),
-              ),
-            ],
+            children: [],
           ),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(90),
@@ -193,6 +204,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
+                        fontFamily: Ui.textstyle,
                         fontWeight: FontWeight.bold),
                   ),
                 )),
@@ -228,7 +240,6 @@ class _HomeState extends State<Home> {
                   color: Colors.black,
                 ),
                 title: Ui.h3[uz_ru]),
-
           ],
           onTap: (int index) {
             if (index == 0) {

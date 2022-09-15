@@ -104,13 +104,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Oswald
+    - family: PlayBold
       fonts:
-        - asset: assets/fonts/Oswald-ExtraLight.ttf
-    - family: Noto
+        - asset: assets/fonts/playbold.ttf
+    - family: Play
       fonts:
-        - asset: assets/fonts/notosans.ttf
-
+        - asset: assets/fonts/playregular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

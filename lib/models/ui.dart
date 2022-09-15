@@ -16,7 +16,7 @@ class Ui {
   static final String phone1 = "+998 99 802 74 74";
   static final String phone2 = "+998 94 688 00 99";
 
-  static final String textstyle = 'Noto';
+  static final String textstyle = 'Play';//'Noto';
   static final String telegram = 't.me/tasuzcom';
   static final String inhstagram =
       'www.instagram.com/p/CfLO258orDI/?igshid=MDJmNzVkMjY=';
