@@ -203,7 +203,7 @@ class _CustomerFormState extends State<CustomerForm> {
               ),
               validator: (value) {
                 if (value!.contains("@")) {
-                  return "eknrkner"; //Ui.c6[context.watch<SimpleProvider>().getuzru];
+                  return Ui.c6[context.watch<SimpleProvider>().getuzru]; //;
                 }
               },
             ),
