@@ -10,8 +10,8 @@ class Ui {
       'https://admin.tascom.uz:8083/api/'; //'';'https://localhost:8083/api/'; //
   static final String urllogin = 'https://admin.tascom.uz:8083';
 
-  // static final String url = 'http://localhost:8083/api/';
-  // static final String urllogin = 'http://localhost:8083';
+   // static final String url = 'https://localhost:8083/api/';
+   // static final String urllogin = 'https://localhost:8083';
   static final String phone = "+998 78 147 00 80";
   static final String phone1 = "+998 99 802 74 74";
   static final String phone2 = "+998 94 688 00 99";
