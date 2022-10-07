@@ -184,7 +184,7 @@ class _CustomerFormState extends State<CustomerForm> {
               decoration: InputDecoration(
                 labelText: Ui.c5[context.watch<SimpleProvider>().getuzru],
                 labelStyle:
-                    TextStyle(color: Colors.indigo, fontFamily: "Oswald"),
+                    TextStyle(color: Colors.indigo, fontFamily: Ui.textstyle),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 1,

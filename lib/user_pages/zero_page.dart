@@ -10,7 +10,6 @@ import '../bloc/section_bloc.dart';
 import '../home.dart';
 import '../services/producer_repository.dart';
 
-double opacityLevel = 1.0;
 
 class ZeroPage extends StatefulWidget {
   const ZeroPage({Key? key}) : super(key: key);
