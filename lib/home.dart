@@ -13,7 +13,6 @@ import 'package:TAS/user_pages/news_page1.dart';
 import 'package:TAS/user_pages/section_page.dart';
 import 'package:TAS/widgets/drawer_home.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -76,7 +75,13 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        onWillPop: () async {
+      // await showDialog or Show add banners or whatever
+      // return true if the route to be popped
+      return false; // return false if you want to disable device back button click
+    },
+    child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.amberAccent[100],
           elevation: 1,
@@ -249,7 +254,7 @@ class _HomeState extends State<Home> {
 
             currentindex = index;
           },
-        ));
+        )));
   }
 
   selectPage(int page) {
